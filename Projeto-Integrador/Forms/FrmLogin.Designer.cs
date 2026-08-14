@@ -52,25 +52,27 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F);
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.Location = new Point(287, 116);
             label2.Name = "label2";
-            label2.Size = new Size(79, 28);
+            label2.Size = new Size(84, 28);
             label2.TabIndex = 1;
             label2.Text = "Usuário";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F);
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.Location = new Point(287, 198);
             label3.Name = "label3";
-            label3.Size = new Size(65, 28);
+            label3.Size = new Size(69, 28);
             label3.TabIndex = 2;
             label3.Text = "Senha";
             // 
             // txtBoxUsuario
             // 
+            txtBoxUsuario.BackColor = Color.Gray;
+            txtBoxUsuario.BorderStyle = BorderStyle.FixedSingle;
             txtBoxUsuario.Location = new Point(287, 147);
             txtBoxUsuario.Name = "txtBoxUsuario";
             txtBoxUsuario.Size = new Size(223, 31);
@@ -78,6 +80,10 @@
             // 
             // txtBoxSenha
             // 
+            txtBoxSenha.AccessibleRole = AccessibleRole.None;
+            txtBoxSenha.BackColor = Color.Gray;
+            txtBoxSenha.BorderStyle = BorderStyle.FixedSingle;
+            txtBoxSenha.CausesValidation = false;
             txtBoxSenha.Location = new Point(287, 229);
             txtBoxSenha.Name = "txtBoxSenha";
             txtBoxSenha.Size = new Size(223, 31);
@@ -85,12 +91,16 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(64, 64, 64);
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(344, 307);
             button1.Name = "button1";
             button1.Size = new Size(112, 34);
             button1.TabIndex = 5;
             button1.Text = "Entrar";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // label4
@@ -127,6 +137,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);
             Controls.Add(lblErrors);
             Controls.Add(lblLinkCadastro);

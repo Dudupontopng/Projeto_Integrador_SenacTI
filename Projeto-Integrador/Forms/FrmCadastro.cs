@@ -31,7 +31,8 @@ namespace Projeto_Integrador.Forms
             var stringBuilder = new StringBuilder();
             var listaDeErros = new List<ValidationResult>();
             var contexto = new ValidationContext(usuario);
-            if(senha == confirmarSenha) {
+            if (senha == confirmarSenha)
+            {
                 Validator.TryValidateObject(usuario, contexto, listaDeErros, true);
                 if (listaDeErros.Count > 0)
                 {
@@ -52,6 +53,11 @@ namespace Projeto_Integrador.Forms
             {
                 lblErrors.Text = "As senhas não se coincidem";
             }
+        }
+
+        private void FrmCadastro_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

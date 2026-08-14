@@ -28,12 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FrmTelaComeco";
+            label1 = new Label();
+            btnIniciar = new Button();
+            btnRanking = new Button();
+            btnHistorico = new Button();
+            btnSair = new Button();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Showcard Gothic", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(354, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 37);
+            label1.TabIndex = 1;
+            label1.Text = "QUIZ";
+            // 
+            // btnIniciar
+            // 
+            btnIniciar.BackColor = Color.FromArgb(64, 64, 64);
+            btnIniciar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnIniciar.ForeColor = Color.White;
+            btnIniciar.Location = new Point(299, 117);
+            btnIniciar.Name = "btnIniciar";
+            btnIniciar.Size = new Size(200, 70);
+            btnIniciar.TabIndex = 2;
+            btnIniciar.Text = "INICIAR";
+            btnIniciar.UseVisualStyleBackColor = false;
+            // 
+            // btnRanking
+            // 
+            btnRanking.BackColor = Color.FromArgb(64, 64, 64);
+            btnRanking.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnRanking.ForeColor = Color.White;
+            btnRanking.Location = new Point(299, 193);
+            btnRanking.Name = "btnRanking";
+            btnRanking.Size = new Size(200, 70);
+            btnRanking.TabIndex = 3;
+            btnRanking.Text = "RANKING";
+            btnRanking.UseVisualStyleBackColor = false;
+            // 
+            // btnHistorico
+            // 
+            btnHistorico.BackColor = Color.FromArgb(64, 64, 64);
+            btnHistorico.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnHistorico.ForeColor = Color.White;
+            btnHistorico.Location = new Point(299, 269);
+            btnHistorico.Name = "btnHistorico";
+            btnHistorico.Size = new Size(200, 70);
+            btnHistorico.TabIndex = 4;
+            btnHistorico.Text = "HISTÓRICO";
+            btnHistorico.UseVisualStyleBackColor = false;
+            // 
+            // btnSair
+            // 
+            btnSair.BackColor = Color.Gray;
+            btnSair.BackgroundImageLayout = ImageLayout.None;
+            btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnSair.ForeColor = Color.White;
+            btnSair.Location = new Point(345, 380);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(112, 34);
+            btnSair.TabIndex = 6;
+            btnSair.Text = "SAIR";
+            btnSair.UseVisualStyleBackColor = false;
+            // 
+            // FrmTelaComeco
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightGray;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnSair);
+            Controls.Add(btnHistorico);
+            Controls.Add(btnRanking);
+            Controls.Add(btnIniciar);
+            Controls.Add(label1);
+            Name = "FrmTelaComeco";
+            Text = "FrmTelaComeco";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private Button btnIniciar;
+        private Button btnRanking;
+        private Button btnHistorico;
+        private Button btnSair;
     }
 }

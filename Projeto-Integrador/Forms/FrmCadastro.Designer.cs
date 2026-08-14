@@ -45,6 +45,8 @@
             // 
             // txtBoxSenha
             // 
+            txtBoxSenha.BackColor = Color.Gray;
+            txtBoxSenha.BorderStyle = BorderStyle.FixedSingle;
             txtBoxSenha.Location = new Point(124, 269);
             txtBoxSenha.Name = "txtBoxSenha";
             txtBoxSenha.Size = new Size(223, 31);
@@ -52,6 +54,8 @@
             // 
             // txtBoxUsuario
             // 
+            txtBoxUsuario.BackColor = Color.Gray;
+            txtBoxUsuario.BorderStyle = BorderStyle.FixedSingle;
             txtBoxUsuario.Location = new Point(124, 187);
             txtBoxUsuario.Name = "txtBoxUsuario";
             txtBoxUsuario.Size = new Size(223, 31);
@@ -60,20 +64,20 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F);
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.Location = new Point(124, 238);
             label3.Name = "label3";
-            label3.Size = new Size(65, 28);
+            label3.Size = new Size(69, 28);
             label3.TabIndex = 7;
             label3.Text = "Senha";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F);
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.Location = new Point(124, 156);
             label2.Name = "label2";
-            label2.Size = new Size(79, 28);
+            label2.Size = new Size(84, 28);
             label2.TabIndex = 6;
             label2.Text = "Usuário";
             // 
@@ -89,6 +93,8 @@
             // 
             // txtBoxConfirmarSenha
             // 
+            txtBoxConfirmarSenha.BackColor = Color.Gray;
+            txtBoxConfirmarSenha.BorderStyle = BorderStyle.FixedSingle;
             txtBoxConfirmarSenha.Location = new Point(124, 339);
             txtBoxConfirmarSenha.Name = "txtBoxConfirmarSenha";
             txtBoxConfirmarSenha.Size = new Size(223, 31);
@@ -97,15 +103,17 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F);
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label4.Location = new Point(124, 308);
             label4.Name = "label4";
-            label4.Size = new Size(154, 28);
+            label4.Size = new Size(168, 28);
             label4.TabIndex = 10;
             label4.Text = "Confirmar senha";
             // 
             // txtBoxNome
             // 
+            txtBoxNome.BackColor = Color.Gray;
+            txtBoxNome.BorderStyle = BorderStyle.FixedSingle;
             txtBoxNome.Location = new Point(124, 109);
             txtBoxNome.Name = "txtBoxNome";
             txtBoxNome.Size = new Size(223, 31);
@@ -114,25 +122,29 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F);
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label5.Location = new Point(124, 78);
             label5.Name = "label5";
-            label5.Size = new Size(66, 28);
+            label5.Size = new Size(69, 28);
             label5.TabIndex = 12;
             label5.Text = "Nome";
             // 
             // btnCadastro
             // 
+            btnCadastro.BackColor = Color.FromArgb(64, 64, 64);
+            btnCadastro.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCadastro.ForeColor = Color.White;
             btnCadastro.Location = new Point(320, 386);
             btnCadastro.Name = "btnCadastro";
             btnCadastro.Size = new Size(150, 40);
             btnCadastro.TabIndex = 14;
             btnCadastro.Text = "Cadastre-se";
-            btnCadastro.UseVisualStyleBackColor = true;
+            btnCadastro.UseVisualStyleBackColor = false;
             btnCadastro.Click += btnCadastro_Click;
             // 
             // datePickerNascimento
             // 
+            datePickerNascimento.CalendarMonthBackground = Color.Gray;
             datePickerNascimento.Location = new Point(410, 109);
             datePickerNascimento.Name = "datePickerNascimento";
             datePickerNascimento.Size = new Size(318, 31);
@@ -141,10 +153,10 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F);
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label6.Location = new Point(410, 80);
             label6.Name = "label6";
-            label6.Size = new Size(185, 28);
+            label6.Size = new Size(201, 28);
             label6.TabIndex = 16;
             label6.Text = "Data de nascimento";
             // 
@@ -162,6 +174,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);
             Controls.Add(lblErrors);
             Controls.Add(label6);
@@ -178,6 +191,7 @@
             Controls.Add(label1);
             Name = "FrmCadastro";
             Text = "FrmCadastro";
+            Load += FrmCadastro_Load;
             ResumeLayout(false);
             PerformLayout();
         }

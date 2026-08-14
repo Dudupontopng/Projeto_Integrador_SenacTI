@@ -45,7 +45,9 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = SystemColors.ButtonFace;
+            btnLogin.BackColor = Color.FromArgb(64, 64, 64);
+            btnLogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(133, 227);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(200, 70);
@@ -56,8 +58,9 @@
             // 
             // btnCadastro
             // 
-            btnCadastro.BackColor = SystemColors.ButtonFace;
-            btnCadastro.ForeColor = SystemColors.ActiveCaptionText;
+            btnCadastro.BackColor = Color.FromArgb(64, 64, 64);
+            btnCadastro.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCadastro.ForeColor = Color.White;
             btnCadastro.Location = new Point(464, 227);
             btnCadastro.Margin = new Padding(10);
             btnCadastro.Name = "btnCadastro";
@@ -65,12 +68,13 @@
             btnCadastro.TabIndex = 2;
             btnCadastro.Text = "CADASTRO";
             btnCadastro.UseVisualStyleBackColor = false;
-            btnCadastro.Click += this.btnCadastro_Click;
+            btnCadastro.Click += btnCadastro_Click;
             // 
             // FrmTelaInicial
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);
             Controls.Add(btnCadastro);
             Controls.Add(btnLogin);
