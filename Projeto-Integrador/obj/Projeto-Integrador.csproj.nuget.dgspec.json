@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RICARDOANT�NIOPICK\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj": {}
+    "C:\\Users\\EDUARDOFINGERBOHN\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RICARDOANT�NIOPICK\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj": {
+    "C:\\Users\\EDUARDOFINGERBOHN\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RICARDOANT�NIOPICK\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj",
+        "projectUniqueName": "C:\\Users\\EDUARDOFINGERBOHN\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj",
         "projectName": "Projeto-Integrador",
-        "projectPath": "C:\\Users\\RICARDOANT�NIOPICK\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj",
-        "packagesPath": "C:\\Users\\RICARDOANT�NIOPICK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RICARDOANT�NIOPICK\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\obj\\",
+        "projectPath": "C:\\Users\\EDUARDOFINGERBOHN\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj",
+        "packagesPath": "C:\\Users\\EDUARDOFINGERBOHN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EDUARDOFINGERBOHN\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\RICARDOANT�NIOPICK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EDUARDOFINGERBOHN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -77,7 +82,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
