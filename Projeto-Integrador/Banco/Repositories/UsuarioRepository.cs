@@ -28,6 +28,7 @@ namespace Projeto_Integrador.Banco.Repositories
         {
             var usuario = await ConexaoBanco.CriarConexao().QueryFirstOrDefaultAsync<Usuario>(@"
             Select 
+            Id,
             Nickname,
             Senha
             FROM quiz.usuario

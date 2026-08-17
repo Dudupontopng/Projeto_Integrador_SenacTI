@@ -12,9 +12,18 @@ namespace Projeto_Integrador.Forms
 {
     public partial class FrmTelaComeco : Form
     {
-        public FrmTelaComeco()
+        private readonly int? _idUsuario;
+        public FrmTelaComeco(int? idUsuario = null)
         {
             InitializeComponent();
+            _idUsuario = idUsuario;
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmPerguntaAlternativas(_idUsuario).ShowDialog();
+            this.Show();
         }
     }
 }

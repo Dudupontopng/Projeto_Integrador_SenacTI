@@ -56,6 +56,7 @@
             btnIniciar.TabIndex = 2;
             btnIniciar.Text = "INICIAR";
             btnIniciar.UseVisualStyleBackColor = false;
+            btnIniciar.Click += btnIniciar_Click;
             // 
             // btnRanking
             // 
