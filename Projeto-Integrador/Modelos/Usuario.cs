@@ -5,15 +5,29 @@ namespace Projeto_Integrador.Modelos
 {
     public class Usuario
     {
-        
-       
         public Usuario() { }
+        public Usuario(int id, string nome, string nickname, DateTime dataNascimento, string senha, string nivel, int pontuacaoTotal, int acertosTotais, int perguntasRespondidas, int maiorSequenciaAcertos, int acertosConsecutivosAtuais, DateTime? ultimoAcesso)
+        {
+            Id = id;
+            Nome = nome;
+            Nickname = nickname;
+            DataNascimento = dataNascimento;
+            Senha = senha;
+            Nivel = nivel;
+            PontuacaoTotal = pontuacaoTotal;
+            AcertosTotais = acertosTotais;
+            PerguntasRespondidas = perguntasRespondidas;
+            MaiorSequenciaAcertos = maiorSequenciaAcertos;
+            AcertosConsecutivosAtuais = acertosConsecutivosAtuais;
+            UltimoAcesso = ultimoAcesso;
+        }
+
         public Usuario(string nickname, string senha)
         {
-            
             Nickname = nickname;
             setSenhaNova(senha);
         }
+
         public Usuario(string nome, string nickname, DateTime dataNascimento)
         {
             Nome = nome;
@@ -21,7 +35,6 @@ namespace Projeto_Integrador.Modelos
             DataNascimento = dataNascimento;
         }
 
-       
         public Usuario(string nome, string nickname, string senha, DateTime dataNascimento)
         {
             Nome = nome;
@@ -29,6 +42,7 @@ namespace Projeto_Integrador.Modelos
             setSenhaNova(senha);
             DataNascimento = dataNascimento;
         }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "O campo 'Nome' é obrigatório")]
@@ -43,6 +57,24 @@ namespace Projeto_Integrador.Modelos
         public DateTime DataNascimento { get; private set; }
 
         public string Senha { get; private set; }
+
+  
+
+        public string Nivel { get; set; } = "iniciante";
+
+        public int PontuacaoTotal { get; set; }
+
+        public int AcertosTotais { get; set; }
+
+        public int PerguntasRespondidas { get; set; }
+
+        public int MaiorSequenciaAcertos { get; set; }
+
+        public int AcertosConsecutivosAtuais { get; set; }
+
+   
+        public DateTime? UltimoAcesso { get; set; }
+
 
         public void setNome(string nome)
         {

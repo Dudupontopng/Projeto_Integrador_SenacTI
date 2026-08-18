@@ -38,5 +38,28 @@ namespace Projeto_Integrador.Banco.Repositories
            
      
         }
+        public static async Task<Usuario?> ObterPorId(string id)
+        {
+            var usuario = await ConexaoBanco.CriarConexao().QueryFirstOrDefaultAsync<Usuario>(@"
+            Select 
+            Id,
+            Nickname,
+            Senha,
+            DataDeNascimento,
+            Nivel,
+            PontuacaoTotal,
+            AcertosTotais,
+            PerguntasRespondidas,
+            MaiorSequenciaAcertos,
+            AcertosConsecutivosAtuais,
+            UltimoAcesso
+            FROM quiz.usuario
+            Where Id = @Id;
+            ", new { Id = id });
+            return usuario;
+
+
+        }
+        
     }
 }

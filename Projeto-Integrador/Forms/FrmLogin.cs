@@ -25,11 +25,12 @@ namespace Projeto_Integrador.Forms
             string nickname = txtBoxUsuario.Text;
             string senha = txtBoxSenha.Text;
             var usuario = await UsuarioRepository.ObterPorUsuario(nickname);
+            int id = usuario.Id;
             if (usuario != null && usuario.validarSenha(senha))
             {
                 txtBoxSenha.Clear();
                 this.Hide();
-                new FrmTelaComeco().ShowDialog();
+                new FrmTelaComeco(id).ShowDialog();
                 this.Show();
             }
             else
