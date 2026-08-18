@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "lyl7mBkpanI=",
+  "dgSpecHash": "fJC1xQ0F47i5aV1gXXbhD5Q56u7zWmdeoHWojh6lavIUOrynDIA50kRO8dwTNvesM3weQF1H6OAWw48TbH/CqQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\EDUARDOFINGERBOHN\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj",
+  "projectFilePath": "C:\\Users\\ISABELLAJUSTINEBUTZK\\Desktop\\Projeto_Integrador_SenacTI\\Projeto-Integrador\\Projeto-Integrador.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\EDUARDOFINGERBOHN\\.nuget\\packages\\bcrypt.net-next\\4.0.0\\bcrypt.net-next.4.0.0.nupkg.sha512",
-    "C:\\Users\\EDUARDOFINGERBOHN\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
-    "C:\\Users\\EDUARDOFINGERBOHN\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
-    "C:\\Users\\EDUARDOFINGERBOHN\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
-    "C:\\Users\\EDUARDOFINGERBOHN\\.nuget\\packages\\npgsql\\9.0.4\\npgsql.9.0.4.nupkg.sha512"
+    "C:\\Users\\ISABELLAJUSTINEBUTZK\\.nuget\\packages\\bcrypt.net-next\\4.0.0\\bcrypt.net-next.4.0.0.nupkg.sha512",
+    "C:\\Users\\ISABELLAJUSTINEBUTZK\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
+    "C:\\Users\\ISABELLAJUSTINEBUTZK\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\ISABELLAJUSTINEBUTZK\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\ISABELLAJUSTINEBUTZK\\.nuget\\packages\\npgsql\\9.0.4\\npgsql.9.0.4.nupkg.sha512"
   ],
   "logs": []
 }
