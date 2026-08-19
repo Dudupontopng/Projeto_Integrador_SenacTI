@@ -75,6 +75,23 @@ namespace Projeto_Integrador.Banco.Repositories
                 Where Id = @Id;
 ", new {Id = idUsuario, Nivel = nivel, PontuacaoTotal = pontuacaoTotal, AcertosTotais = acertosTotais, PerguntasRespondidas = perguntasRespondidas, MaiorSequenciaAcertos = maiorSequenciaAcertos, AcertosConsecutivosAtuais = acertosConsecutivosAtuais, UltimoAcesso = ultimoAcesso });
         }
-        
+        public static async Task<TemaDominante?> ObterTemaDominante(int idUsuario)
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+            var sql = @"
+        SELECT 
+            TemaPergunta AS Tema, 
+            COUNT(*) AS Quantidade
+        FROM historico_partida
+        WHERE UsuarioId = @UsuarioId AND Acertou = true
+        GROUP BY TemaPergunta
+        ORDER BY Quantidade DESC
+        LIMIT 1;
+    ";
+
+            return await conexao.QueryFirstOrDefaultAsync<TemaDominante>(sql, new { UsuarioId = idUsuario });
+        }
+
     }
 }
