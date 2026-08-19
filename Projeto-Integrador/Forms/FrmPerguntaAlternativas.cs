@@ -74,10 +74,10 @@ namespace Projeto_Integrador.Forms
 
         private void MarcarAlternativa(Button btnClicado)
         {
-            btnAlternativa1.BackColor = SystemColors.Control;
-            btnAlternativa2.BackColor = SystemColors.Control;
-            btnAlternativa3.BackColor = SystemColors.Control;
-            btnAlternativa4.BackColor = SystemColors.Control;
+            btnAlternativa1.BackColor = Color.FromArgb(64, 64, 64) ;
+            btnAlternativa2.BackColor = Color.FromArgb(64, 64, 64);
+            btnAlternativa3.BackColor = Color.FromArgb(64, 64, 64);
+            btnAlternativa4.BackColor = Color.FromArgb(64, 64, 64);
 
 
             btnClicado.BackColor = Color.LightSkyBlue;
@@ -85,7 +85,7 @@ namespace Projeto_Integrador.Forms
 
             alternativaSelecionada = btnClicado;
         }
-        private async void btnProximo_Click_1(object sender, EventArgs e)
+        private void btnProximo_Click_1(object sender, EventArgs e)
         {
             if(alternativaSelecionada == null)
             {
@@ -101,7 +101,7 @@ namespace Projeto_Integrador.Forms
             {
 
             }
-            alternativaSelecionada.BackColor = SystemColors.Control;
+            alternativaSelecionada.BackColor = Color.FromArgb(64, 64, 64);
             alternativaSelecionada = null;
             proximo();
         }
@@ -110,6 +110,7 @@ namespace Projeto_Integrador.Forms
             indiceAtual++;
             if (indiceAtual < 10)
             {
+                lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
                 ExibirPerguntaAtual();
                 await ExibirAlternativas();
             }
