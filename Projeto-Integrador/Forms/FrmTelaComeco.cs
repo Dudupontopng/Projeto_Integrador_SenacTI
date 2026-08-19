@@ -25,5 +25,15 @@ namespace Projeto_Integrador.Forms
             new FrmPerguntaAlternativas(_idUsuario).ShowDialog();
             this.Show();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

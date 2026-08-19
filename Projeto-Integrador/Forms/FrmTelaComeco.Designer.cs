@@ -33,6 +33,9 @@
             btnRanking = new Button();
             btnHistorico = new Button();
             btnSair = new Button();
+            pictureBox1 = new PictureBox();
+            btnPerfil = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -95,12 +98,40 @@
             btnSair.Text = "SAIR";
             btnSair.UseVisualStyleBackColor = false;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.prefil_certo_removebg_preview;
+            pictureBox1.Location = new Point(659, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(129, 100);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // btnPerfil
+            // 
+            btnPerfil.BackColor = Color.FromArgb(64, 64, 64);
+            btnPerfil.BackgroundImageLayout = ImageLayout.None;
+            btnPerfil.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPerfil.ForeColor = Color.White;
+            btnPerfil.Location = new Point(668, 104);
+            btnPerfil.Name = "btnPerfil";
+            btnPerfil.Size = new Size(112, 34);
+            btnPerfil.TabIndex = 9;
+            btnPerfil.Text = "Perfil";
+            btnPerfil.UseVisualStyleBackColor = false;
+            btnPerfil.Click += btnPerfil_Click;
+            // 
             // FrmTelaComeco
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnPerfil);
+            Controls.Add(pictureBox1);
             Controls.Add(btnSair);
             Controls.Add(btnHistorico);
             Controls.Add(btnRanking);
@@ -108,6 +139,7 @@
             Controls.Add(label1);
             Name = "FrmTelaComeco";
             Text = "FrmTelaComeco";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,5 +151,7 @@
         private Button btnRanking;
         private Button btnHistorico;
         private Button btnSair;
+        private PictureBox pictureBox1;
+        private Button btnPerfil;
     }
 }
