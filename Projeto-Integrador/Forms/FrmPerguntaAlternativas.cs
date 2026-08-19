@@ -21,6 +21,7 @@ namespace Projeto_Integrador.Forms
         private int indiceAtual = 0;
         private Usuario usuario;
         private Button alternativaSelecionada = null;
+        private int pontosTotais = 0;
         public FrmPerguntaAlternativas(int? idUsuario = null)
         {
             InitializeComponent();
@@ -36,7 +37,9 @@ namespace Projeto_Integrador.Forms
             lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
             await ExibirAlternativas();
             usuario = await UsuarioRepository.ObterPorId(_idUsuario);
-            
+            var perguntaAtual = perguntasSorteadas[indiceAtual];
+            lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
+
 
         }
         private void ExibirPerguntaAtual()
@@ -85,7 +88,7 @@ namespace Projeto_Integrador.Forms
 
             alternativaSelecionada = btnClicado;
         }
-        private void btnProximo_Click_1(object sender, EventArgs e)
+        private async void btnProximo_Click_1(object sender, EventArgs e)
         {
             if(alternativaSelecionada == null)
             {
@@ -93,30 +96,61 @@ namespace Projeto_Integrador.Forms
                 return;
             }
             bool isCorreta = (bool)alternativaSelecionada.Tag;
+            var perguntaAtual = perguntasSorteadas[indiceAtual];
+            int pontosGanhosNaPergunta = 0;
             if (isCorreta)
             {
-
+                int pontosBase = perguntaAtual.Pontuacao;
+                double multiplicadorBase = 1.0;
+                if(usuario.AcertosConsecutivosAtuais >= 5)
+                {
+                    multiplicadorBase = 1.2;
+                }
+                else if(usuario.AcertosConsecutivosAtuais >= 3)
+                {
+                    multiplicadorBase = 1.10;
+                }
+                pontosGanhosNaPergunta = (int)Math.Round(pontosBase * multiplicadorBase);
+                usuario.PontuacaoTotal += pontosGanhosNaPergunta;
+                usuario.AcertosTotais++;
+                usuario.AcertosConsecutivosAtuais++;
+                if (usuario.AcertosConsecutivosAtuais > usuario.MaiorSequenciaAcertos)
+                {
+                    usuario.MaiorSequenciaAcertos = usuario.AcertosConsecutivosAtuais;
+                }
             }
             else
             {
+                usuario.AcertosConsecutivosAtuais = 0;
 
             }
+            usuario.PerguntasRespondidas++;
+            pontosTotais += pontosGanhosNaPergunta;
+            await HistoricoRepository.RegistrarResposta(usuario.Id, perguntaAtual.Id, perguntaAtual.Tema, isCorreta, pontosGanhosNaPergunta);
             alternativaSelecionada.BackColor = Color.FromArgb(64, 64, 64);
             alternativaSelecionada = null;
             proximo();
         }
         private async void proximo()
         {
+            
             indiceAtual++;
+            
+
             if (indiceAtual < 10)
             {
+                var perguntaAtual = perguntasSorteadas[indiceAtual];
                 lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+                lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
                 ExibirPerguntaAtual();
                 await ExibirAlternativas();
             }
             else
             {
-                MessageBox.Show("Quiz finalizado! Vamos calcular seus pontos.", "Quiz terminado!", MessageBoxButtons.OK);
+                MessageBox.Show($"Quiz finalizado! voce obteve {pontosTotais} pontos!", "Quiz terminado!", MessageBoxButtons.OK);
+                await UsuarioRepository.AtualizarUsuario(usuario.Id, usuario.Nivel, usuario.PontuacaoTotal, usuario.AcertosTotais, usuario.PerguntasRespondidas, usuario.MaiorSequenciaAcertos, usuario.AcertosConsecutivosAtuais, DateTime.Now);
+
+                this.Close();
             }
         }
         private void btnAlternativa1_Click(object sender, EventArgs e)

@@ -35,6 +35,7 @@
             btnAlternativa2 = new Button();
             btnAlternativa3 = new Button();
             btnAlternativa4 = new Button();
+            lblPontosPergunta = new Label();
             SuspendLayout();
             // 
             // lblEnunciado
@@ -128,11 +129,22 @@
             btnAlternativa4.UseVisualStyleBackColor = false;
             btnAlternativa4.Click += btnAlternativa4_Click;
             // 
+            // lblPontosPergunta
+            // 
+            lblPontosPergunta.AutoSize = true;
+            lblPontosPergunta.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblPontosPergunta.Location = new Point(12, 4);
+            lblPontosPergunta.Name = "lblPontosPergunta";
+            lblPontosPergunta.Size = new Size(290, 48);
+            lblPontosPergunta.TabIndex = 13;
+            lblPontosPergunta.Text = "PontosPergunta";
+            // 
             // FrmPerguntaAlternativas
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(782, 450);
+            Controls.Add(lblPontosPergunta);
             Controls.Add(btnAlternativa4);
             Controls.Add(btnAlternativa3);
             Controls.Add(btnAlternativa2);
@@ -156,5 +168,6 @@
         private Button btnAlternativa2;
         private Button btnAlternativa3;
         private Button btnAlternativa4;
+        private Label lblPontosPergunta;
     }
 }
