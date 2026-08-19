@@ -17,7 +17,7 @@ namespace Projeto_Integrador.Banco.Repositories
             using var conexao = ConexaoBanco.CriarConexao();
 
             var sql = @"
-                INSERT INTO historico_partida 
+                INSERT INTO quiz.historico_partida 
                 (UsuarioId, PerguntaId, TemaPergunta, Acertou, PontuacaoGanha)
                 VALUES 
                 (@UsuarioId, @PerguntaId, @TemaPergunta, @Acertou, @PontuacaoGanha);
