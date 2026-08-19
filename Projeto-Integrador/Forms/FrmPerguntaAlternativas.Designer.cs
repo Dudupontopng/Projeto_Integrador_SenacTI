@@ -70,7 +70,7 @@
             btnProximo.TabIndex = 8;
             btnProximo.Text = "Proximo";
             btnProximo.UseVisualStyleBackColor = false;
-            btnProximo.Click += btnProximo_Click;
+            btnProximo.Click += btnProximo_Click_1;
             // 
             // btnAlternativa1
             // 
@@ -84,6 +84,7 @@
             btnAlternativa1.TabIndex = 9;
             btnAlternativa1.Text = "Alternativa1";
             btnAlternativa1.UseVisualStyleBackColor = false;
+            btnAlternativa1.Click += btnAlternativa1_Click;
             // 
             // btnAlternativa2
             // 
@@ -97,6 +98,7 @@
             btnAlternativa2.TabIndex = 10;
             btnAlternativa2.Text = "Alternativa2";
             btnAlternativa2.UseVisualStyleBackColor = false;
+            btnAlternativa2.Click += btnAlternativa2_Click;
             // 
             // btnAlternativa3
             // 
@@ -110,6 +112,7 @@
             btnAlternativa3.TabIndex = 11;
             btnAlternativa3.Text = "Alternativa3";
             btnAlternativa3.UseVisualStyleBackColor = false;
+            btnAlternativa3.Click += btnAlternativa3_Click;
             // 
             // btnAlternativa4
             // 
@@ -123,6 +126,7 @@
             btnAlternativa4.TabIndex = 12;
             btnAlternativa4.Text = "Alternativa4";
             btnAlternativa4.UseVisualStyleBackColor = false;
+            btnAlternativa4.Click += btnAlternativa4_Click;
             // 
             // FrmPerguntaAlternativas
             // 

@@ -19,11 +19,13 @@ namespace Projeto_Integrador.Forms
         private readonly int? _idPergunta;
         private List<Pergunta> perguntasSorteadas;
         private int indiceAtual = 0;
+        private Usuario usuario;
+        private Button alternativaSelecionada = null;
         public FrmPerguntaAlternativas(int? idUsuario = null)
         {
             InitializeComponent();
             _idUsuario = idUsuario;
-            
+
 
         }
 
@@ -32,12 +34,16 @@ namespace Projeto_Integrador.Forms
             perguntasSorteadas = await PerguntaRepository.ObterPerguntasQuiz();
             ExibirPerguntaAtual();
             lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
-            ExibirAlternativas();
+            await ExibirAlternativas();
+            usuario = await UsuarioRepository.ObterPorId(_idUsuario);
+            
+
         }
         private void ExibirPerguntaAtual()
         {
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             lblEnunciado.Text = perguntaAtual.Enunciado;
+
         }
         private async Task ExibirAlternativas()
         {
@@ -45,22 +51,91 @@ namespace Projeto_Integrador.Forms
             int idPergunta = perguntaAtual.Id;
             var alterativas = await AlternativaRepository.ObterAlternativas(idPergunta);
             btnAlternativa1.Text = alterativas[0].Texto;
+            btnAlternativa1.Tag = alterativas[0].IsCorreta;
             btnAlternativa2.Text = alterativas[1].Texto;
-            btnAlternativa3.Text = alterativas[2].Texto;
-            btnAlternativa4.Text = alterativas[3].Texto;
-        }
-
-        private void btnProximo_Click(object sender, EventArgs e)
-        {
-            indiceAtual++;
-            if(indiceAtual < 10)
+            btnAlternativa2.Tag = alterativas[1].IsCorreta;
+            if (alterativas.Count == 4)
             {
-                ExibirPerguntaAtual();
+                btnAlternativa3.Visible = true;
+                btnAlternativa4.Visible = true;
+                btnAlternativa3.Text = alterativas[2].Texto;
+                btnAlternativa3.Tag = alterativas[2].IsCorreta;
+                btnAlternativa4.Text = alterativas[3].Texto;
+                btnAlternativa4.Tag = alterativas[3].IsCorreta;
             }
             else
             {
-               MessageBox.Show("Quiz finalizado! Vamos calcular seus pontos!", "Quiz finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnAlternativa3.Visible = false;
+                btnAlternativa4.Visible = false;
             }
+
+        }
+
+
+        private void MarcarAlternativa(Button btnClicado)
+        {
+            btnAlternativa1.BackColor = SystemColors.Control;
+            btnAlternativa2.BackColor = SystemColors.Control;
+            btnAlternativa3.BackColor = SystemColors.Control;
+            btnAlternativa4.BackColor = SystemColors.Control;
+
+
+            btnClicado.BackColor = Color.LightSkyBlue;
+
+
+            alternativaSelecionada = btnClicado;
+        }
+        private async void btnProximo_Click_1(object sender, EventArgs e)
+        {
+            if(alternativaSelecionada == null)
+            {
+                MessageBox.Show("Por favor, selecione uma alternativa antes de continuar!");
+                return;
+            }
+            bool isCorreta = (bool)alternativaSelecionada.Tag;
+            if (isCorreta)
+            {
+
+            }
+            else
+            {
+
+            }
+            alternativaSelecionada.BackColor = SystemColors.Control;
+            alternativaSelecionada = null;
+            proximo();
+        }
+        private async void proximo()
+        {
+            indiceAtual++;
+            if (indiceAtual < 10)
+            {
+                ExibirPerguntaAtual();
+                await ExibirAlternativas();
+            }
+            else
+            {
+                MessageBox.Show("Quiz finalizado! Vamos calcular seus pontos.", "Quiz terminado!", MessageBoxButtons.OK);
+            }
+        }
+        private void btnAlternativa1_Click(object sender, EventArgs e)
+        {
+            MarcarAlternativa(btnAlternativa1);
+        }
+
+        private void btnAlternativa2_Click(object sender, EventArgs e)
+        {
+            MarcarAlternativa(btnAlternativa2);
+        }
+
+        private void btnAlternativa3_Click(object sender, EventArgs e)
+        {
+            MarcarAlternativa(btnAlternativa3);
+        }
+
+        private void btnAlternativa4_Click(object sender, EventArgs e)
+        {
+            MarcarAlternativa(btnAlternativa4);
         }
     }
 }

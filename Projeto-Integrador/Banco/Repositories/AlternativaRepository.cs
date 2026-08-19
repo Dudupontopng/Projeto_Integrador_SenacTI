@@ -22,9 +22,7 @@ namespace Projeto_Integrador.Banco.Repositories
                     PerguntaId,
                     Texto,
                     IsCorreta
-                    from quiz.alternativa a
-                    inner join quiz.pergunta p
-                    on a.PerguntaId = p.Id
+                    from quiz.alternativa
                     Where PerguntaId = @PerguntaId;
 ", new { PerguntaId = idPergunta }
                 );
