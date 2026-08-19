@@ -33,7 +33,14 @@ namespace Projeto_Integrador.Forms
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            new FrmPerfil(_idUsuario).ShowDialog();
+            this.Show();
+        }
 
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

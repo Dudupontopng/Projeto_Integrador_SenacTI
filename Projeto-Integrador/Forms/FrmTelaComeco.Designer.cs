@@ -97,6 +97,7 @@
             btnSair.TabIndex = 6;
             btnSair.Text = "SAIR";
             btnSair.UseVisualStyleBackColor = false;
+            btnSair.Click += btnSair_Click;
             // 
             // pictureBox1
             // 
