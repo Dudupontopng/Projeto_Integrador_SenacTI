@@ -130,7 +130,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(839, 510);
             Controls.Add(btnPerfil);
             Controls.Add(pictureBox1);
             Controls.Add(btnSair);

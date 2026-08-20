@@ -33,11 +33,16 @@ namespace Projeto_Integrador.Forms
         private async void FrmPerguntaAlternativas_Load(object sender, EventArgs e)
         {
             perguntasSorteadas = await PerguntaRepository.ObterPerguntasQuiz();
-            ExibirPerguntaAtual();
             lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+            var perguntaAtual = perguntasSorteadas[indiceAtual];
+            lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
+            lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+            ExibirPerguntaAtual();
+           
+
             await ExibirAlternativas();
             usuario = await UsuarioRepository.ObterPorId(_idUsuario);
-            var perguntaAtual = perguntasSorteadas[indiceAtual];
+           
             lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
 
 
@@ -46,6 +51,9 @@ namespace Projeto_Integrador.Forms
         {
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             lblEnunciado.Text = perguntaAtual.Enunciado;
+            lblEnunciado.Left = (this.ClientSize.Width - lblEnunciado.Width) / 2;
+            lblPontosPergunta.Left = (this.ClientSize.Width - lblPontosPergunta.Width) / 2;
+            lblNumeroPergunta.Left = (this.ClientSize.Width - lblNumeroPergunta.Width) / 2;
 
         }
         private async Task ExibirAlternativas()
@@ -77,7 +85,7 @@ namespace Projeto_Integrador.Forms
 
         private void MarcarAlternativa(Button btnClicado)
         {
-            btnAlternativa1.BackColor = Color.FromArgb(64, 64, 64) ;
+            btnAlternativa1.BackColor = Color.FromArgb(64, 64, 64);
             btnAlternativa2.BackColor = Color.FromArgb(64, 64, 64);
             btnAlternativa3.BackColor = Color.FromArgb(64, 64, 64);
             btnAlternativa4.BackColor = Color.FromArgb(64, 64, 64);
@@ -90,7 +98,7 @@ namespace Projeto_Integrador.Forms
         }
         private async void btnProximo_Click_1(object sender, EventArgs e)
         {
-            if(alternativaSelecionada == null)
+            if (alternativaSelecionada == null)
             {
                 MessageBox.Show("Por favor, selecione uma alternativa antes de continuar!");
                 return;
@@ -102,11 +110,11 @@ namespace Projeto_Integrador.Forms
             {
                 int pontosBase = perguntaAtual.Pontuacao;
                 double multiplicadorBase = 1.0;
-                if(usuario.AcertosConsecutivosAtuais >= 5)
+                if (usuario.AcertosConsecutivosAtuais >= 5)
                 {
                     multiplicadorBase = 1.2;
                 }
-                else if(usuario.AcertosConsecutivosAtuais >= 3)
+                else if (usuario.AcertosConsecutivosAtuais >= 3)
                 {
                     multiplicadorBase = 1.10;
                 }
@@ -131,17 +139,20 @@ namespace Projeto_Integrador.Forms
             alternativaSelecionada = null;
             proximo();
         }
+
         private async void proximo()
         {
-            
+
             indiceAtual++;
-            
+
 
             if (indiceAtual < 10)
             {
                 var perguntaAtual = perguntasSorteadas[indiceAtual];
                 lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+                
                 lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
+               
                 ExibirPerguntaAtual();
                 await ExibirAlternativas();
             }
@@ -171,6 +182,16 @@ namespace Projeto_Integrador.Forms
         private void btnAlternativa4_Click(object sender, EventArgs e)
         {
             MarcarAlternativa(btnAlternativa4);
+        }
+
+        private void lblNumeroPergunta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPontosPergunta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

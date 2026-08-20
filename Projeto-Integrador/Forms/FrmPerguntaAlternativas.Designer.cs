@@ -40,24 +40,29 @@
             // 
             // lblEnunciado
             // 
+            lblEnunciado.Anchor = AnchorStyles.Top;
             lblEnunciado.AutoSize = true;
             lblEnunciado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblEnunciado.Location = new Point(212, 64);
-            lblEnunciado.MaximumSize = new Size(360, 360);
+            lblEnunciado.Location = new Point(323, 65);
+            lblEnunciado.MaximumSize = new Size(550, 100);
             lblEnunciado.Name = "lblEnunciado";
             lblEnunciado.Size = new Size(110, 28);
             lblEnunciado.TabIndex = 6;
             lblEnunciado.Text = "Enunciado";
+            lblEnunciado.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblNumeroPergunta
             // 
+            lblNumeroPergunta.Anchor = AnchorStyles.Top;
             lblNumeroPergunta.AutoSize = true;
-            lblNumeroPergunta.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblNumeroPergunta.Location = new Point(249, 4);
+            lblNumeroPergunta.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblNumeroPergunta.Location = new Point(258, 9);
             lblNumeroPergunta.Name = "lblNumeroPergunta";
-            lblNumeroPergunta.Size = new Size(311, 48);
+            lblNumeroPergunta.Size = new Size(261, 41);
             lblNumeroPergunta.TabIndex = 7;
             lblNumeroPergunta.Text = "NumeroPergunta";
+            lblNumeroPergunta.TextAlign = ContentAlignment.TopCenter;
+            lblNumeroPergunta.Click += lblNumeroPergunta_Click;
             // 
             // btnProximo
             // 
@@ -79,9 +84,9 @@
             btnAlternativa1.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa1.ForeColor = Color.White;
-            btnAlternativa1.Location = new Point(70, 149);
+            btnAlternativa1.Location = new Point(70, 203);
             btnAlternativa1.Name = "btnAlternativa1";
-            btnAlternativa1.Size = new Size(272, 105);
+            btnAlternativa1.Size = new Size(272, 71);
             btnAlternativa1.TabIndex = 9;
             btnAlternativa1.Text = "Alternativa1";
             btnAlternativa1.UseVisualStyleBackColor = false;
@@ -93,9 +98,9 @@
             btnAlternativa2.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa2.ForeColor = Color.White;
-            btnAlternativa2.Location = new Point(443, 149);
+            btnAlternativa2.Location = new Point(443, 203);
             btnAlternativa2.Name = "btnAlternativa2";
-            btnAlternativa2.Size = new Size(272, 105);
+            btnAlternativa2.Size = new Size(272, 71);
             btnAlternativa2.TabIndex = 10;
             btnAlternativa2.Text = "Alternativa2";
             btnAlternativa2.UseVisualStyleBackColor = false;
@@ -107,9 +112,9 @@
             btnAlternativa3.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa3.ForeColor = Color.White;
-            btnAlternativa3.Location = new Point(70, 283);
+            btnAlternativa3.Location = new Point(70, 311);
             btnAlternativa3.Name = "btnAlternativa3";
-            btnAlternativa3.Size = new Size(272, 105);
+            btnAlternativa3.Size = new Size(272, 77);
             btnAlternativa3.TabIndex = 11;
             btnAlternativa3.Text = "Alternativa3";
             btnAlternativa3.UseVisualStyleBackColor = false;
@@ -121,9 +126,9 @@
             btnAlternativa4.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa4.ForeColor = Color.White;
-            btnAlternativa4.Location = new Point(443, 283);
+            btnAlternativa4.Location = new Point(443, 311);
             btnAlternativa4.Name = "btnAlternativa4";
-            btnAlternativa4.Size = new Size(272, 105);
+            btnAlternativa4.Size = new Size(272, 77);
             btnAlternativa4.TabIndex = 12;
             btnAlternativa4.Text = "Alternativa4";
             btnAlternativa4.UseVisualStyleBackColor = false;
@@ -131,13 +136,16 @@
             // 
             // lblPontosPergunta
             // 
+            lblPontosPergunta.Anchor = AnchorStyles.Top;
             lblPontosPergunta.AutoSize = true;
-            lblPontosPergunta.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblPontosPergunta.Location = new Point(12, 4);
+            lblPontosPergunta.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblPontosPergunta.Location = new Point(306, 157);
             lblPontosPergunta.Name = "lblPontosPergunta";
-            lblPontosPergunta.Size = new Size(290, 48);
+            lblPontosPergunta.Size = new Size(147, 25);
             lblPontosPergunta.TabIndex = 13;
             lblPontosPergunta.Text = "PontosPergunta";
+            lblPontosPergunta.TextAlign = ContentAlignment.TopCenter;
+            lblPontosPergunta.Click += lblPontosPergunta_Click;
             // 
             // FrmPerguntaAlternativas
             // 
