@@ -156,6 +156,7 @@
             Controls.Add(lblNick);
             Name = "FrmPerfil";
             Text = "FrmPerfil";
+            Load += FrmPerfil_Load;
             ResumeLayout(false);
             PerformLayout();
         }

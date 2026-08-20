@@ -82,8 +82,8 @@ namespace Projeto_Integrador.Banco.Repositories
             var sql = @"
         SELECT 
             TemaPergunta AS Tema, 
-            COUNT(*) AS Quantidade
-        FROM historico_partida
+            CAST (COUNT(*) AS INT) AS Quantidade
+        FROM quiz.historico_partida
         WHERE UsuarioId = @UsuarioId AND Acertou = true
         GROUP BY TemaPergunta
         ORDER BY Quantidade DESC

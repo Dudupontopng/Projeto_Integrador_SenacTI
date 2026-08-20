@@ -29,25 +29,29 @@ namespace Projeto_Integrador.Forms
             public int PerguntasRespondidas { get; set; }
             public string TemaDominante { get; set; }
         }
-        private void FrmPerfil_Load(object sender, EventArgs e)
+        private async void FrmPerfil_Load(object sender, EventArgs e)
         {
-            CarregarPerfil();
+            await CarregarPerfil();
         }
-        private async void CarregarPerfil()
+        private async Task CarregarPerfil()
         {
-           var _usuarioAtual =  await UsuarioRepository.ObterPorId(_idUsuario);
-            if (_usuarioAtual == null) return;
-            var temaDominante = await UsuarioRepository.ObterTemaDominante((int)_idUsuario);
+            
+                var _usuarioAtual = await UsuarioRepository.ObterPorId(_idUsuario.Value);
+                if (_usuarioAtual == null) return;
 
+                lblNick.Text = _usuarioAtual.Nickname.ToUpper();
+                string nivelUsuario = _usuarioAtual.Nivel ?? "iniciante";
+                lblNivelProgresso.Text = $"NÍVEL {nivelUsuario.ToUpper()}";
+                lblPontuacaoTotal.Text = $"Pontuação total: {_usuarioAtual.PontuacaoTotal}";
+                lblAcertos.Text = $"Número de acertos: {_usuarioAtual.AcertosTotais}";
+                lblPerguntasRespondidas.Text = $"Número de perguntas respondidas: {_usuarioAtual.PerguntasRespondidas}";
 
-            lblNick.Text = _usuarioAtual.Nickname.ToUpper();
-            lblNivelProgresso.Text = $"NÍVEL {_usuarioAtual.Nivel} ({_usuarioAtual}% PROGRESSO)";
-
-
-            lblPontuacaoTotal.Text = $"Pontuação total: {_usuarioAtual.PontuacaoTotal}";
-            lblAcertos.Text = $"Número de acertos: {_usuarioAtual.AcertosTotais}";
-            lblPerguntasRespondidas.Text = $"Número de perguntas respondidas: {_usuarioAtual.PerguntasRespondidas}";
-            lblTemaDominante.Text = $"Tema dominante: {temaDominante}";
+                var temaDominante = await UsuarioRepository.ObterTemaDominante(_idUsuario.Value);
+                lblTemaDominante.Text = temaDominante != null
+                    ? $"Tema dominante: {temaDominante.Tema} ({temaDominante.Quantidade} acertos)"
+                    : "Tema dominante: Nenhum jogo registrado";
+            
+           
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
