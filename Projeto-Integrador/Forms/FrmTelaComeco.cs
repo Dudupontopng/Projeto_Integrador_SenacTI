@@ -42,5 +42,14 @@ namespace Projeto_Integrador.Forms
         {
             this.Hide();
         }
+
+        private void btnRanking_Click(object sender, EventArgs e)
+        {
+            FrmRanking telaRanking = new FrmRanking();
+
+            this.Hide();
+            telaRanking.ShowDialog();
+            this.Show();
+        }
     }
 }

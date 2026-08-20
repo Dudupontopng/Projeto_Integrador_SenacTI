@@ -72,6 +72,7 @@
             btnRanking.TabIndex = 3;
             btnRanking.Text = "RANKING";
             btnRanking.UseVisualStyleBackColor = false;
+            btnRanking.Click += btnRanking_Click;
             // 
             // btnHistorico
             // 

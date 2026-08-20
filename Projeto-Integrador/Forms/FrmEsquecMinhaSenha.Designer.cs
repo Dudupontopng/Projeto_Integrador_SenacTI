@@ -66,7 +66,6 @@
             label1.Size = new Size(219, 45);
             label1.TabIndex = 7;
             label1.Text = "Alterar senha";
-            label1.Click += label1_Click;
             // 
             // txtBoxConfirmarSenha
             // 
@@ -117,6 +116,7 @@
             btnAlterar.TabIndex = 16;
             btnAlterar.Text = "Alterar";
             btnAlterar.UseVisualStyleBackColor = false;
+            btnAlterar.Click += btnAlterar_Click;
             // 
             // FrmEsquecMinhaSenha
             // 

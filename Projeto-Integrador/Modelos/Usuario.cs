@@ -72,7 +72,11 @@ namespace Projeto_Integrador.Modelos
 
         public int AcertosConsecutivosAtuais { get; set; }
 
-   
+        public int Posicao { get; set; }
+
+        public string TemaDominante { get; set; } = "Nenhum";
+
+
         public DateTime? UltimoAcesso { get; set; }
 
 

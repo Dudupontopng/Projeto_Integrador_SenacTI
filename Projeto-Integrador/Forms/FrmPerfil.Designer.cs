@@ -37,6 +37,7 @@
             btnLogin = new Button();
             lnkConquistas = new LinkLabel();
             lnkHistorico = new LinkLabel();
+            lnkAlterarSenha = new LinkLabel();
             SuspendLayout();
             // 
             // lblNick
@@ -121,7 +122,7 @@
             // lnkConquistas
             // 
             lnkConquistas.AutoSize = true;
-            lnkConquistas.Location = new Point(677, 9);
+            lnkConquistas.Location = new Point(667, 43);
             lnkConquistas.Name = "lnkConquistas";
             lnkConquistas.Size = new Size(100, 25);
             lnkConquistas.TabIndex = 8;
@@ -132,7 +133,7 @@
             // lnkHistorico
             // 
             lnkHistorico.AutoSize = true;
-            lnkHistorico.Location = new Point(694, 34);
+            lnkHistorico.Location = new Point(684, 72);
             lnkHistorico.Name = "lnkHistorico";
             lnkHistorico.Size = new Size(83, 25);
             lnkHistorico.TabIndex = 9;
@@ -140,11 +141,23 @@
             lnkHistorico.Text = "Histórico";
             lnkHistorico.LinkClicked += lnkHistorico_LinkClicked;
             // 
+            // lnkAlterarSenha
+            // 
+            lnkAlterarSenha.AutoSize = true;
+            lnkAlterarSenha.Location = new Point(652, 18);
+            lnkAlterarSenha.Name = "lnkAlterarSenha";
+            lnkAlterarSenha.Size = new Size(115, 25);
+            lnkAlterarSenha.TabIndex = 10;
+            lnkAlterarSenha.TabStop = true;
+            lnkAlterarSenha.Text = "Alterar senha";
+            lnkAlterarSenha.LinkClicked += lnkAlterarSenha_LinkClicked;
+            // 
             // FrmPerfil
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lnkAlterarSenha);
             Controls.Add(lnkHistorico);
             Controls.Add(lnkConquistas);
             Controls.Add(btnLogin);
@@ -172,5 +185,6 @@
         private Button btnLogin;
         private LinkLabel lnkConquistas;
         private LinkLabel lnkHistorico;
+        private LinkLabel lnkAlterarSenha;
     }
 }

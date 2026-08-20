@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             btnSair = new Button();
-            btnVerPerfil = new Button();
-            dataGridView1 = new DataGridView();
+            btnPerfil = new Button();
+            dgvRanking = new DataGridView();
             lblNumeroPergunta = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRanking).BeginInit();
             SuspendLayout();
             // 
             // btnSair
@@ -48,27 +48,29 @@
             btnSair.Text = "SAIR";
             btnSair.UseVisualStyleBackColor = false;
             // 
-            // btnVerPerfil
+            // btnPerfil
             // 
-            btnVerPerfil.BackColor = Color.FromArgb(64, 64, 64);
-            btnVerPerfil.BackgroundImageLayout = ImageLayout.None;
-            btnVerPerfil.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnVerPerfil.ForeColor = Color.White;
-            btnVerPerfil.Location = new Point(40, 394);
-            btnVerPerfil.Name = "btnVerPerfil";
-            btnVerPerfil.Size = new Size(112, 34);
-            btnVerPerfil.TabIndex = 13;
-            btnVerPerfil.Text = "Ver perfil";
-            btnVerPerfil.UseVisualStyleBackColor = false;
+            btnPerfil.BackColor = Color.FromArgb(64, 64, 64);
+            btnPerfil.BackgroundImageLayout = ImageLayout.None;
+            btnPerfil.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPerfil.ForeColor = Color.White;
+            btnPerfil.Location = new Point(40, 394);
+            btnPerfil.Name = "btnPerfil";
+            btnPerfil.Size = new Size(112, 34);
+            btnPerfil.TabIndex = 13;
+            btnPerfil.Text = "Ver perfil";
+            btnPerfil.UseVisualStyleBackColor = false;
+            btnPerfil.Click += btnPerfil_Click;
             // 
-            // dataGridView1
+            // dgvRanking
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(40, 68);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(740, 320);
-            dataGridView1.TabIndex = 14;
+            dgvRanking.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRanking.Location = new Point(40, 68);
+            dgvRanking.Name = "dgvRanking";
+            dgvRanking.RowHeadersWidth = 62;
+            dgvRanking.Size = new Size(740, 320);
+            dgvRanking.TabIndex = 14;
+            dgvRanking.CellContentClick += dataGridView1_CellContentClick;
             // 
             // lblNumeroPergunta
             // 
@@ -88,20 +90,20 @@
             BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);
             Controls.Add(lblNumeroPergunta);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnVerPerfil);
+            Controls.Add(dgvRanking);
+            Controls.Add(btnPerfil);
             Controls.Add(btnSair);
             Name = "FrmRanking";
             Text = "FrmRanking";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRanking).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Button btnSair;
-        private Button btnVerPerfil;
-        private DataGridView dataGridView1;
+        private Button btnPerfil;
+        private DataGridView dgvRanking;
         private Label lblNumeroPergunta;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_Integrador.Banco.Repositories;
 
 namespace Projeto_Integrador.Banco.Repositories
 {
@@ -21,7 +22,7 @@ namespace Projeto_Integrador.Banco.Repositories
                 Values(@Nome, @Nickname, @Senha, @DataNascimento);
             ",
             usuario
-      
+
             );
         }
         public static async Task<Usuario?> ObterPorUsuario(string nickname)
@@ -35,8 +36,8 @@ namespace Projeto_Integrador.Banco.Repositories
             Where Nickname = @Nickname;
             ", new { Nickname = nickname });
             return usuario;
-           
-     
+
+
         }
         public static async Task<Usuario?> ObterPorId(int? id)
         {
@@ -73,7 +74,7 @@ namespace Projeto_Integrador.Banco.Repositories
                 AcertosConsecutivosAtuais = @AcertosConsecutivosAtuais,
                 UltimoAcesso = @UltimoAcesso
                 Where Id = @Id;
-", new {Id = idUsuario, Nivel = nivel, PontuacaoTotal = pontuacaoTotal, AcertosTotais = acertosTotais, PerguntasRespondidas = perguntasRespondidas, MaiorSequenciaAcertos = maiorSequenciaAcertos, AcertosConsecutivosAtuais = acertosConsecutivosAtuais, UltimoAcesso = ultimoAcesso });
+", new { Id = idUsuario, Nivel = nivel, PontuacaoTotal = pontuacaoTotal, AcertosTotais = acertosTotais, PerguntasRespondidas = perguntasRespondidas, MaiorSequenciaAcertos = maiorSequenciaAcertos, AcertosConsecutivosAtuais = acertosConsecutivosAtuais, UltimoAcesso = ultimoAcesso });
         }
         public static async Task<TemaDominante?> ObterTemaDominante(int idUsuario)
         {
@@ -93,5 +94,58 @@ namespace Projeto_Integrador.Banco.Repositories
             return await conexao.QueryFirstOrDefaultAsync<TemaDominante>(sql, new { UsuarioId = idUsuario });
         }
 
+        public static async Task<IEnumerable<Usuario>> ObterTodos()
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+            var sql = @"
+            SELECT 
+                Id,
+                Nome,
+                Nickname,
+                DataDeNascimento AS DataNascimento,
+                Nivel,
+                PontuacaoTotal,
+                AcertosTotais,
+                PerguntasRespondidas,
+                MaiorSequenciaAcertos,
+                AcertosConsecutivosAtuais,
+                UltimoAcesso
+            FROM quiz.usuario;";
+
+            return await conexao.QueryAsync<Usuario>(sql);
+        }
+
+        public static async Task<IEnumerable<Usuario>> ObterRanking()
+        {
+            var usuarios = await ObterTodos();
+
+            var listaOrdenada = usuarios.OrderByDescending(u => u.PontuacaoTotal)
+                                        .ThenByDescending(u => u.AcertosTotais)
+                                        .ToList();
+
+            int posicao = 1;
+            foreach (var usuario in listaOrdenada)
+            {
+                usuario.Posicao = posicao++;
+
+                var temaObj = await ObterTemaDominante(usuario.Id);
+                usuario.TemaDominante = temaObj != null ? temaObj.Tema : "Nenhum";
+            }
+
+            return listaOrdenada;
+        }
+
+        public static async Task AlterarSenha(int idUsuario, string novaSenhaCriptografada)
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+            string sql = @"
+                UPDATE quiz.usuario 
+                SET Senha = @Senha 
+                WHERE Id = @Id;";
+
+            await conexao.ExecuteAsync(sql, new { Senha = novaSenhaCriptografada, Id = idUsuario });
+        }
     }
 }
