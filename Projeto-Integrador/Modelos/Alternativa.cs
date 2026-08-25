@@ -17,6 +17,14 @@ namespace Projeto_Integrador.Modelos
             Texto = texto;
             IsCorreta = isCorreta;
         }
+        public Alternativa(string texto, int perguntaId, bool isCorreta)
+        {
+            
+           
+            Texto = texto;
+            PerguntaId = perguntaId;
+            IsCorreta = isCorreta;
+        }
         public int Id {  get; set; }
         public int PerguntaId { get; set; }
         public string Texto { get; set; }

@@ -35,6 +35,7 @@
             btnSair = new Button();
             pictureBox1 = new PictureBox();
             btnPerfil = new Button();
+            btnCriarPergunta = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -126,12 +127,27 @@
             btnPerfil.UseVisualStyleBackColor = false;
             btnPerfil.Click += btnPerfil_Click;
             // 
+            // btnCriarPergunta
+            // 
+            btnCriarPergunta.BackColor = Color.FromArgb(64, 64, 64);
+            btnCriarPergunta.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCriarPergunta.ForeColor = Color.White;
+            btnCriarPergunta.Location = new Point(299, 117);
+            btnCriarPergunta.Name = "btnCriarPergunta";
+            btnCriarPergunta.Size = new Size(200, 70);
+            btnCriarPergunta.TabIndex = 10;
+            btnCriarPergunta.Text = "CRIAR PERGUNTA";
+            btnCriarPergunta.UseVisualStyleBackColor = false;
+            btnCriarPergunta.Visible = false;
+            btnCriarPergunta.Click += btnCriarPergunta_Click;
+            // 
             // FrmTelaComeco
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(839, 510);
+            Controls.Add(btnCriarPergunta);
             Controls.Add(btnPerfil);
             Controls.Add(pictureBox1);
             Controls.Add(btnSair);
@@ -141,6 +157,7 @@
             Controls.Add(label1);
             Name = "FrmTelaComeco";
             Text = "FrmTelaComeco";
+            Load += FrmTelaComeco_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -155,5 +172,6 @@
         private Button btnSair;
         private PictureBox pictureBox1;
         private Button btnPerfil;
+        private Button btnCriarPergunta;
     }
 }

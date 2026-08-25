@@ -120,7 +120,23 @@ namespace Projeto_Integrador.Forms
                 }
                 pontosGanhosNaPergunta = (int)Math.Round(pontosBase * multiplicadorBase);
                 usuario.PontuacaoTotal += pontosGanhosNaPergunta;
-                usuario.AcertosTotais++;
+                if(usuario.PontuacaoTotal >= 10000)
+                {
+                    usuario.Nivel = "avançado";
+                }
+                else if(usuario.PontuacaoTotal >= 2001)
+                {
+                    usuario.Nivel = "intermediario";
+                }
+                else if(usuario.PontuacaoTotal >= 501)
+                {
+                    usuario.Nivel = "aprendiz";
+                }
+                else
+                {
+                    usuario.Nivel = "iniciante";
+                }
+                    usuario.AcertosTotais++;
                 usuario.AcertosConsecutivosAtuais++;
                 if (usuario.AcertosConsecutivosAtuais > usuario.MaiorSequenciaAcertos)
                 {

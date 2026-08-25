@@ -28,5 +28,15 @@ namespace Projeto_Integrador.Banco.Repositories
                 );
             return alternativas.ToList();
         }
+        public static async Task Adicionar(Alternativa alternativa)
+        {
+            await ConexaoBanco.CriarConexao().QueryAsync(
+                 @"
+                 INSERT INTO quiz.alternativa(Texto, PerguntaId, IsCorreta)
+                 VALUES(@Texto, @PerguntaId, @IsCorreta);                  
+                 ",
+                 alternativa
+                 );
+        }
     }
 }

@@ -13,10 +13,12 @@ namespace Projeto_Integrador.Forms
     public partial class FrmTelaComeco : Form
     {
         private readonly int? _idUsuario;
-        public FrmTelaComeco(int? idUsuario = null)
+        private readonly bool? _ehAdmin;
+        public FrmTelaComeco(int? idUsuario = null, bool? ehAdmin = null)
         {
             InitializeComponent();
             _idUsuario = idUsuario;
+            _ehAdmin = ehAdmin;
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -49,6 +51,25 @@ namespace Projeto_Integrador.Forms
 
             this.Hide();
             telaRanking.ShowDialog();
+            this.Show();
+        }
+
+        private void FrmTelaComeco_Load(object sender, EventArgs e)
+        {
+            if ((bool)_ehAdmin)
+            {
+                btnCriarPergunta.Visible = true;
+                btnIniciar.Visible = false;
+                btnPerfil.Visible = false;
+                btnHistorico.Visible = false;
+                pictureBox1.Visible = false;
+            }
+        }
+
+        private void btnCriarPergunta_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmCadastrarPergunta().ShowDialog();
             this.Show();
         }
     }
