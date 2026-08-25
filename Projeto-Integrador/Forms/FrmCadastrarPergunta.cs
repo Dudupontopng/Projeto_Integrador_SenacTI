@@ -32,6 +32,8 @@ namespace Projeto_Integrador.Forms
             string tema = cbTema.Text;
             int pontuacao = int.Parse(txtBoxPontuacao.Text);
             var pergunta = new Pergunta(enunciado, tipo, nivel, tema, pontuacao);
+
+            pergunta.Id = await PerguntaRepository.Adicionar(pergunta);
             await PerguntaRepository.Adicionar(pergunta);
 
             
