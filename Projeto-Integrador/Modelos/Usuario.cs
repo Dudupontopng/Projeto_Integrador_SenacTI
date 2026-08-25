@@ -79,7 +79,7 @@ namespace Projeto_Integrador.Modelos
 
         public DateTime? UltimoAcesso { get; set; }
 
-
+        
         public void setNome(string nome)
         {
             Nome = nome;

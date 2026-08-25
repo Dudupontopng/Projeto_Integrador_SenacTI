@@ -21,6 +21,15 @@ namespace Projeto_Integrador.Modelos
             Tema = tema;
             Pontuacao = pontuacao;
         }
+        public Pergunta( string enunciado, string tipo, string nivel, string tema, int pontuacao)
+        {
+           
+            Enunciado = enunciado;
+            Tipo = tipo;
+            Nivel = nivel;
+            Tema = tema;
+            Pontuacao = pontuacao;
+        }
         public int Id { get; set; }
         public string Enunciado { get; set; }
         public string Tipo { get; set; }

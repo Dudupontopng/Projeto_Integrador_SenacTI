@@ -94,3 +94,4 @@ C:\Users\RICARDOANT�NIOPICK\Desktop\Projeto_Integrador_SenacTI\Projeto-Integra
 C:\Users\RICARDOANT�NIOPICK\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto-Integrador.pdb
 C:\Users\RICARDOANT�NIOPICK\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto-Integrador.genruntimeconfig.cache
 C:\Users\RICARDOANT�NIOPICK\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\ref\Projeto-Integrador.dll
+C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto_Integrador.Forms.FrmCadastrarPergunta.resources
