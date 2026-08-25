@@ -65,11 +65,6 @@ namespace Projeto_Integrador.Forms
             this.Close();
         }
 
-        private void lnkConquistas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show("Abrindo Conquistas...", "Conquistas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void lnkHistorico_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("Abrindo Histórico...", "Histórico", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,6 +83,13 @@ namespace Projeto_Integrador.Forms
             this.Hide();
             telaAlterarSenha.ShowDialog();
             this.Show();
+        }
+
+        private void lnkConquistas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmConquistas frmConquistas = new FrmConquistas(_idUsuario);
+
+            frmConquistas.ShowDialog();
         }
     }
 }

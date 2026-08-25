@@ -61,6 +61,126 @@ namespace Projeto_Integrador.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] _10_acertos_seguidos___conquista {
+            get {
+                object obj = ResourceManager.GetObject("_10_acertos_seguidos___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] _3_dias_seguidos___conquista {
+            get {
+                object obj = ResourceManager.GetObject("_3_dias_seguidos___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] _30_dias_seguidos___conquista {
+            get {
+                object obj = ResourceManager.GetObject("_30_dias_seguidos___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] _365_dias_seguidos___conquista {
+            get {
+                object obj = ResourceManager.GetObject("_365_dias_seguidos___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] _7_dias_seguidos___conquista {
+            get {
+                object obj = ResourceManager.GetObject("_7_dias_seguidos___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] _90_dias_seguidos___conquista {
+            get {
+                object obj = ResourceManager.GetObject("_90_dias_seguidos___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] mestre_de_produtividade___conquista {
+            get {
+                object obj = ResourceManager.GetObject("mestre_de_produtividade___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] mestre_de_redes___conquista {
+            get {
+                object obj = ResourceManager.GetObject("mestre_de_redes___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] mestre_de_segurança___conquista {
+            get {
+                object obj = ResourceManager.GetObject("mestre_de_segurança___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] mestre_em_hardware {
+            get {
+                object obj = ResourceManager.GetObject("mestre_em_hardware", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Mestre_programação___conquista {
+            get {
+                object obj = ResourceManager.GetObject("Mestre_programação___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Mestre_sistemas___conquista {
+            get {
+                object obj = ResourceManager.GetObject("Mestre_sistemas___conquista", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap perfil {
@@ -87,6 +207,16 @@ namespace Projeto_Integrador.Properties {
             get {
                 object obj = ResourceManager.GetObject("prefil_certo-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Primeiro_quiz___conquista {
+            get {
+                object obj = ResourceManager.GetObject("Primeiro_quiz___conquista", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

@@ -127,4 +127,43 @@
   <data name="prefil_certo-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\prefil_certo-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mestre_em_hardware" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mestre em hardware.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_365_dias_seguidos___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\365 dias seguidos - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_90_dias_seguidos___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\90 dias seguidos - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_30_dias_seguidos___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\30 dias seguidos - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mestre_de_produtividade___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mestre de produtividade - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mestre_de_segurança___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mestre de segurança - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mestre_de_redes___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mestre de redes - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_7_dias_seguidos___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7 dias seguidos - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_3_dias_seguidos___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3 dias seguidos - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Mestre_sistemas___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mestre sistemas - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Mestre_programação___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mestre programação - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_10_acertos_seguidos___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10 acertos seguidos - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Primeiro_quiz___conquista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Primeiro quiz - conquista.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
