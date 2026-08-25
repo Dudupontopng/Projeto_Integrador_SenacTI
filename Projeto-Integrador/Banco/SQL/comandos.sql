@@ -701,3 +701,6 @@ INSERT INTO alternativa (PerguntaId, Texto, IsCorreta) VALUES
 -- Pergunta 100 (Ferramentas de produtividade, V/F, Intermediário)
 (100, 'Verdadeiro', true),
 (100, 'Falso', false);
+
+ALTER TABLE quiz.usuario 
+ADD COLUMN DiasSeguidos INT DEFAULT 1;

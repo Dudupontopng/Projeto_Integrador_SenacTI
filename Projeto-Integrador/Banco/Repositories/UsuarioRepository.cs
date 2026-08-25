@@ -166,5 +166,48 @@ namespace Projeto_Integrador.Banco.Repositories
 
             return await ConexaoBanco.CriarConexao().ExecuteScalarAsync<int>(sql, new { UsuarioId = idUsuario, Tema = $"%{tema}%" });
         }
+
+        public static async Task AtualizarDiasSeguidosEAcesso(int idUsuario)
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+            var sqlBusca = "SELECT UltimoAcesso, DiasSeguidos FROM quiz.usuario WHERE Id = @Id;";
+            var dados = await conexao.QueryFirstOrDefaultAsync<dynamic>(sqlBusca, new { Id = idUsuario });
+
+            if (dados == null) return;
+
+            DateTime? ultimoAcesso = dados.ultimoacesso;
+            int diasSeguidos = dados.diasseguidos ?? 0;
+            DateTime hoje = DateTime.Today;
+
+            if (ultimoAcesso.HasValue)
+            {
+                DateTime dataUltimoAcesso = ultimoAcesso.Value.Date;
+                int diferencaDias = (hoje - dataUltimoAcesso).Days;
+
+                if (diferencaDias == 1)
+                {
+
+                    diasSeguidos++;
+                }
+                else if (diferencaDias > 1)
+                {
+                    diasSeguidos = 1;
+                }
+                
+            }
+            else
+            {
+                diasSeguidos = 1;
+            }
+
+            var sqlUpdate = @"
+        UPDATE quiz.usuario 
+        SET UltimoAcesso = @Hoje, 
+            DiasSeguidos = @DiasSeguidos 
+        WHERE Id = @Id;";
+
+            await conexao.ExecuteAsync(sqlUpdate, new { Hoje = hoje, DiasSeguidos = diasSeguidos, Id = idUsuario });
+        }
     }
 }

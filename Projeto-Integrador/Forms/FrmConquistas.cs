@@ -81,7 +81,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Foco Inicial",
                 descricao: "Acesse o sistema por 3 dias seguidos.",
                 icone: ConverterParaImagem(Properties.Resources._3_dias_seguidos___conquista),
-                progressoAtual: 1,
+                progressoAtual: usuario.DiasSeguidos,
                 progressoMaximo: 3
             );
 
@@ -89,7 +89,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Dedicado",
                 descricao: "Acesse o sistema por 7 dias seguidos.",
                 icone: ConverterParaImagem(Properties.Resources._7_dias_seguidos___conquista),
-                progressoAtual: 1,
+                progressoAtual: usuario.DiasSeguidos,
                 progressoMaximo: 7
             );
 
@@ -97,7 +97,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Hábito Formado",
                 descricao: "Acesse o sistema por 30 dias seguidos.",
                 icone: ConverterParaImagem(Properties.Resources._30_dias_seguidos___conquista),
-                progressoAtual: 1,
+                progressoAtual: usuario.DiasSeguidos,
                 progressoMaximo: 30
             );
 
@@ -105,7 +105,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Persistente",
                 descricao: "Acesse o sistema por 90 dias seguidos.",
                 icone: ConverterParaImagem(Properties.Resources._90_dias_seguidos___conquista),
-                progressoAtual: 1,
+                progressoAtual: usuario.DiasSeguidos,
                 progressoMaximo: 90
             );
 
@@ -113,7 +113,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Lenda do Ano",
                 descricao: "Acesse o sistema por 365 dias seguidos.",
                 icone: ConverterParaImagem(Properties.Resources._365_dias_seguidos___conquista),
-                progressoAtual: 1,
+                progressoAtual: usuario.DiasSeguidos,
                 progressoMaximo: 365
             );
 
