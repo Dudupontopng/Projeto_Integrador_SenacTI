@@ -15,10 +15,10 @@ namespace Projeto_Integrador.Forms
             InitializeComponent();
 
             this.Load += FrmRanking_Load;
-            btnSair.Click += btnSair_Click; 
+            btnSair.Click += btnSair_Click;
         }
 
-        private async void FrmRanking_Load(object? sender, EventArgs e)
+        private async void FrmRanking_Load(object sender, EventArgs e)
         {
             await CarregarRanking();
         }
@@ -62,7 +62,7 @@ namespace Projeto_Integrador.Forms
             this.Show();
         }
 
-        private void btnSair_Click(object? sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }

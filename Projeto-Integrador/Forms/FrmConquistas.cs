@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,14 @@ namespace Projeto_Integrador.Forms
                 MessageBox.Show("Não foi possível carregar os dados do usuário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            // Busca os acertos individuais de cada tema no banco
+            int acertosProdutividade = await UsuarioRepository.ObterAcertosPorTema(_idUsuario.Value, "Ferramentas de produtividade");
+            int acertosRedes = await UsuarioRepository.ObterAcertosPorTema(_idUsuario.Value, "Redes");
+            int acertosSeguranca = await UsuarioRepository.ObterAcertosPorTema(_idUsuario.Value, "Segurança Digital");
+            int acertosHardware = await UsuarioRepository.ObterAcertosPorTema(_idUsuario.Value, "Hardware");
+            int acertosProgramacao = await UsuarioRepository.ObterAcertosPorTema(_idUsuario.Value, "Programação");
+            int acertosSistemas = await UsuarioRepository.ObterAcertosPorTema(_idUsuario.Value, "Sistemas Operacionais");
 
             flowLayoutPanel1.Controls.Clear();
 
@@ -108,11 +117,12 @@ namespace Projeto_Integrador.Forms
                 progressoMaximo: 365
             );
 
+            // Conquistas de Mestres por Tema
             AdicionarCardConquista(
                 titulo: "Mestre em Produtividade",
                 descricao: "Obtenha 100 acertos no tema Produtividade.",
                 icone: ConverterParaImagem(Properties.Resources.mestre_de_produtividade___conquista),
-                progressoAtual: usuario.TemaDominante == "Produtividade" ? usuario.AcertosTotais : 0,
+                progressoAtual: acertosProdutividade,
                 progressoMaximo: 100
             );
 
@@ -120,7 +130,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Mestre em Redes",
                 descricao: "Obtenha 100 acertos no tema Redes.",
                 icone: ConverterParaImagem(Properties.Resources.mestre_de_redes___conquista),
-                progressoAtual: usuario.TemaDominante == "Redes" ? usuario.AcertosTotais : 0,
+                progressoAtual: acertosRedes,
                 progressoMaximo: 100
             );
 
@@ -128,7 +138,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Mestre em Segurança",
                 descricao: "Obtenha 100 acertos no tema Segurança.",
                 icone: ConverterParaImagem(Properties.Resources.mestre_de_segurança___conquista),
-                progressoAtual: usuario.TemaDominante == "Segurança" ? usuario.AcertosTotais : 0,
+                progressoAtual: acertosSeguranca,
                 progressoMaximo: 100
             );
 
@@ -136,7 +146,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Mestre em Hardware",
                 descricao: "Obtenha 100 acertos no tema Hardware.",
                 icone: ConverterParaImagem(Properties.Resources.mestre_em_hardware),
-                progressoAtual: usuario.TemaDominante == "Hardware" ? usuario.AcertosTotais : 0,
+                progressoAtual: acertosHardware,
                 progressoMaximo: 100
             );
 
@@ -144,7 +154,7 @@ namespace Projeto_Integrador.Forms
                 titulo: "Mestre em Programação",
                 descricao: "Obtenha 100 acertos no tema Programação.",
                 icone: ConverterParaImagem(Properties.Resources.Mestre_programação___conquista),
-                progressoAtual: usuario.TemaDominante == "Programação" ? usuario.AcertosTotais : 0,
+                progressoAtual: acertosProgramacao,
                 progressoMaximo: 100
             );
 
@@ -152,12 +162,11 @@ namespace Projeto_Integrador.Forms
                 titulo: "Mestre em Sistemas",
                 descricao: "Obtenha 100 acertos no tema Sistemas.",
                 icone: ConverterParaImagem(Properties.Resources.Mestre_sistemas___conquista),
-                progressoAtual: usuario.TemaDominante == "Sistemas" ? usuario.AcertosTotais : 0,
+                progressoAtual: acertosSistemas,
                 progressoMaximo: 100
             );
         }
 
-        // Método que converte byte[] em Image
         private Image ConverterParaImagem(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0) return null;

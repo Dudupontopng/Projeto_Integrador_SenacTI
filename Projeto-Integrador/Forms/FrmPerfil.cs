@@ -88,7 +88,6 @@ namespace Projeto_Integrador.Forms
         private void lnkConquistas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmConquistas frmConquistas = new FrmConquistas(_idUsuario);
-
             frmConquistas.ShowDialog();
         }
     }
