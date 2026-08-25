@@ -134,6 +134,7 @@
             Controls.Add(label3);
             Name = "FrmEsquecMinhaSenha";
             Text = "FrmEsquecMinhaSenha";
+            Load += FrmEsquecMinhaSenha_Load;
             ResumeLayout(false);
             PerformLayout();
         }
