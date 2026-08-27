@@ -85,6 +85,7 @@
             btnHistorico.TabIndex = 4;
             btnHistorico.Text = "HISTÓRICO";
             btnHistorico.UseVisualStyleBackColor = false;
+            btnHistorico.Click += btnHistorico_Click;
             // 
             // btnSair
             // 
@@ -141,6 +142,7 @@
             Controls.Add(label1);
             Name = "FrmTelaComeco";
             Text = "FrmTelaComeco";
+            Load += FrmTelaComeco_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

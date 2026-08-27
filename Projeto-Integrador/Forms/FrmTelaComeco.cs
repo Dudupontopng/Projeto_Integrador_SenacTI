@@ -51,5 +51,21 @@ namespace Projeto_Integrador.Forms
             telaRanking.ShowDialog();
             this.Show();
         }
+
+        private void btnHistorico_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            HistoricoForm telaHistorico = new HistoricoForm();
+            telaHistorico.ShowDialog();
+            this.Show();
+        }
+
+        private void FrmTelaComeco_Load(object sender, EventArgs e)
+        {
+
+
+
+        }
     }
 }
+
