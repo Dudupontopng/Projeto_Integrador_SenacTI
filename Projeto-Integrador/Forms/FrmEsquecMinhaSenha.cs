@@ -67,5 +67,10 @@ namespace Projeto_Integrador.Forms
                 MessageBox.Show($"Erro ao alterar senha: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void FrmEsquecMinhaSenha_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

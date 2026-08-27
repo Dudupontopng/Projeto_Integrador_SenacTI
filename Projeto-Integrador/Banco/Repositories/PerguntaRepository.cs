@@ -28,7 +28,23 @@ namespace Projeto_Integrador.Banco.Repositories
             var random = new Random();
             return perguntas.OrderBy(x => random.Next()).ToList();
         }
-    
+        public static async Task<int> Adicionar(Pergunta pergunta)
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+           
+            int idGerado = await conexao.ExecuteScalarAsync<int>(
+                 @"
+         INSERT INTO quiz.pergunta(Enunciado, Tipo, Nivel, Tema, Pontuacao)
+         VALUES(@Enunciado, @Tipo, @Nivel, @Tema, @Pontuacao)
+         RETURNING Id; 
+         ",
+                 pergunta
+            );
+
+            return idGerado;
+        }
+
 
     }
 }

@@ -22,24 +22,38 @@ namespace Projeto_Integrador.Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            bool ehAdmin  = false;
             string nickname = txtBoxUsuario.Text;
             string senha = txtBoxSenha.Text;
-            var usuario = await UsuarioRepository.ObterPorUsuario(nickname);
-            int id = usuario.Id;
-            if (usuario != null && usuario.validarSenha(senha))
+            if (txtBoxUsuario.Text == "admin" && txtBoxSenha.Text == "1234")
             {
-                txtBoxSenha.Clear();
+                ehAdmin = true;
                 this.Hide();
-                new FrmTelaComeco(id).ShowDialog();
+                new FrmTelaComeco(null, ehAdmin).ShowDialog();
                 this.Show();
             }
             else
             {
-                MessageBox.Show("Usuario ou senha não encontrada ou invalida",
-                    "Erro ao fazer login",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+
+                var usuario = await UsuarioRepository.ObterPorUsuario(nickname);
+                
+                if (usuario != null && usuario.validarSenha(senha))
+                {
+                    int id = usuario.Id;
+                    txtBoxSenha.Clear();
+                    this.Hide();
+                    new FrmTelaComeco(id, ehAdmin).ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario ou senha não encontrada ou invalida",
+                        "Erro ao fazer login",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
+                
         }
 
         private void lblLinkCadastro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

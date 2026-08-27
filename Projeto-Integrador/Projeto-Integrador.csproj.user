@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\FrmCadastrarAlternativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmCadastrarPergunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FrmCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmConquistas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FrmEsquecMinhaSenha.cs">
@@ -27,6 +36,9 @@
     </Compile>
     <Compile Update="Forms\HistoricoForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UcConquista.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

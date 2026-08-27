@@ -76,10 +76,10 @@ namespace Projeto_Integrador.Modelos
 
         public string TemaDominante { get; set; } = "Nenhum";
 
-
+        public int DiasSeguidos { get; set; } = 1;
         public DateTime? UltimoAcesso { get; set; }
 
-
+        
         public void setNome(string nome)
         {
             Nome = nome;

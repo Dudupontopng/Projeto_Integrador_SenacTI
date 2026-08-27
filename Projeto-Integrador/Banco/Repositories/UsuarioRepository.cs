@@ -41,6 +41,8 @@ namespace Projeto_Integrador.Banco.Repositories
         }
         public static async Task<Usuario?> ObterPorId(int? id)
         {
+            if (id == null) return null;
+
             var usuario = await ConexaoBanco.CriarConexao().QueryFirstOrDefaultAsync<Usuario>(@"
             Select 
             Id,
@@ -57,9 +59,14 @@ namespace Projeto_Integrador.Banco.Repositories
             FROM quiz.usuario
             Where Id = @Id;
             ", new { Id = id });
+
+            if (usuario != null)
+            {
+                var temaObj = await ObterTemaDominante(usuario.Id);
+                usuario.TemaDominante = temaObj != null ? temaObj.Tema : "Nenhum";
+            }
+
             return usuario;
-
-
         }
         public static async Task AtualizarUsuario(int idUsuario, string nivel, int pontuacaoTotal, int acertosTotais, int perguntasRespondidas, int maiorSequenciaAcertos, int acertosConsecutivosAtuais, DateTime ultimoAcesso)
         {
@@ -146,6 +153,61 @@ namespace Projeto_Integrador.Banco.Repositories
                 WHERE Id = @Id;";
 
             await conexao.ExecuteAsync(sql, new { Senha = novaSenhaCriptografada, Id = idUsuario });
+        }
+
+        public static async Task<int> ObterAcertosPorTema(int idUsuario, string tema)
+        {
+            var sql = @"
+            SELECT COUNT(*) 
+            FROM quiz.historico_partida
+            WHERE UsuarioId = @UsuarioId 
+              AND Acertou = true 
+              AND LOWER(TemaPergunta) ILIKE LOWER(@Tema);";
+
+            return await ConexaoBanco.CriarConexao().ExecuteScalarAsync<int>(sql, new { UsuarioId = idUsuario, Tema = $"%{tema}%" });
+        }
+
+        public static async Task AtualizarDiasSeguidosEAcesso(int idUsuario)
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+            var sqlBusca = "SELECT UltimoAcesso, DiasSeguidos FROM quiz.usuario WHERE Id = @Id;";
+            var dados = await conexao.QueryFirstOrDefaultAsync<dynamic>(sqlBusca, new { Id = idUsuario });
+
+            if (dados == null) return;
+
+            DateTime? ultimoAcesso = dados.ultimoacesso;
+            int diasSeguidos = dados.diasseguidos ?? 0;
+            DateTime hoje = DateTime.Today;
+
+            if (ultimoAcesso.HasValue)
+            {
+                DateTime dataUltimoAcesso = ultimoAcesso.Value.Date;
+                int diferencaDias = (hoje - dataUltimoAcesso).Days;
+
+                if (diferencaDias == 1)
+                {
+
+                    diasSeguidos++;
+                }
+                else if (diferencaDias > 1)
+                {
+                    diasSeguidos = 1;
+                }
+                
+            }
+            else
+            {
+                diasSeguidos = 1;
+            }
+
+            var sqlUpdate = @"
+        UPDATE quiz.usuario 
+        SET UltimoAcesso = @Hoje, 
+            DiasSeguidos = @DiasSeguidos 
+        WHERE Id = @Id;";
+
+            await conexao.ExecuteAsync(sqlUpdate, new { Hoje = hoje, DiasSeguidos = diasSeguidos, Id = idUsuario });
         }
     }
 }
