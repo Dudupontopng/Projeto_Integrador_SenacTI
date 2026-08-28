@@ -22,6 +22,7 @@ namespace Projeto_Integrador.Forms
         private Usuario usuario;
         private Button alternativaSelecionada = null;
         private int pontosTotais = 0;
+        private bool modoDobroOuNada = false;
         public FrmPerguntaAlternativas(int? idUsuario = null)
         {
             InitializeComponent();
@@ -61,7 +62,7 @@ namespace Projeto_Integrador.Forms
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             int idPergunta = perguntaAtual.Id;
             var alterativas = await AlternativaRepository.ObterAlternativas(idPergunta);
-            btnAlternativa1.Text = alterativas[0].Texto;
+                btnAlternativa1.Text = alterativas[0].Texto;
             btnAlternativa1.Tag = alterativas[0].IsCorreta;
             btnAlternativa2.Text = alterativas[1].Texto;
             btnAlternativa2.Tag = alterativas[1].IsCorreta;
@@ -119,6 +120,12 @@ namespace Projeto_Integrador.Forms
                     multiplicadorBase = 1.10;
                 }
                 pontosGanhosNaPergunta = (int)Math.Round(pontosBase * multiplicadorBase);
+
+                if(modoDobroOuNada && indiceAtual == 9)
+                {
+                    pontosGanhosNaPergunta += pontosTotais;
+                    MessageBox.Show("BOOOA! Você acertou a pergunta final e DOBROU seus pontos!", "Aposta Vencida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 usuario.PontuacaoTotal += pontosGanhosNaPergunta;
                 if(usuario.PontuacaoTotal >= 10000)
                 {
@@ -146,6 +153,12 @@ namespace Projeto_Integrador.Forms
             else
             {
                 usuario.AcertosConsecutivosAtuais = 0;
+                if (modoDobroOuNada && indiceAtual == 9)
+                {
+                    MessageBox.Show("FIM DE JOGO! Você errou a aposta e perdeu todos os pontos desta partida.", "Aposta Perdida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usuario.PontuacaoTotal -= pontosTotais;
+                    pontosTotais = 0;
+                }
 
             }
             usuario.PerguntasRespondidas++;
@@ -160,13 +173,31 @@ namespace Projeto_Integrador.Forms
         {
 
             indiceAtual++;
+            if (indiceAtual == 9 && pontosTotais > 0)
+            {
+                DialogResult resposta = MessageBox.Show(
+                    $"Você chegou na ÚLTIMA pergunta com {pontosTotais} pontos!\n\nDeseja ativar o modo DOBRO OU NADA?\nSe acertar, ganha o dobro dos pontos da partida. Se errar, perde TUDO!\n\nAceita o desafio?",
+                    "Dobro ou Nada",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Exclamation);
 
+                if (resposta == DialogResult.Yes)
+                {
+                    modoDobroOuNada = true;
+                }
+            }
 
             if (indiceAtual < 10)
             {
                 var perguntaAtual = perguntasSorteadas[indiceAtual];
                 lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
-                
+
+                if (modoDobroOuNada)
+                {
+                    lblNumeroPergunta.Text += " (DOBRO OU NADA!)";
+                    lblNumeroPergunta.ForeColor = Color.Red;    
+                }
+
                 lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
                
                 ExibirPerguntaAtual();

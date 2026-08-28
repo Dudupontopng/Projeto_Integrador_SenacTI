@@ -56,6 +56,12 @@ namespace Projeto_Integrador.Modelos
         [Required(ErrorMessage = "O campo 'Data de Nascimento' é obrigatório")]
         public DateTime DataNascimento { get; private set; }
 
+        [Required(ErrorMessage = "A senha é obrigatória")]
+        [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#\-_])[A-Za-z\d@$!%*?&#\-_]{6,}$",
+        ErrorMessage = "A senha deve ter pelo menos 1 letra maiúscula, 1 minúscula, 1 número e 1 caractere especial.")]
+        public string SenhaEmTextoPuro { get; set; }
+
         public string Senha { get; private set; }
 
   
@@ -101,6 +107,11 @@ namespace Projeto_Integrador.Modelos
             {
                 throw new ArgumentException("A senha não pode ser vazia");
             }
+
+           
+            this.SenhaEmTextoPuro = senhaEmPuroTexto;
+
+            
             Senha = BCrypt.Net.BCrypt.HashPassword(senhaEmPuroTexto);
         }
 

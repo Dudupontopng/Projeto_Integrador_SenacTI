@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_Integrador.Banco.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,11 +22,22 @@ namespace Projeto_Integrador.Forms
             _ehAdmin = ehAdmin;
         }
 
-        private void btnIniciar_Click(object sender, EventArgs e)
+        private async void btnIniciar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new FrmPerguntaAlternativas(_idUsuario).ShowDialog();
-            this.Show();
+            var usuario = await UsuarioRepository.ObterPorId(_idUsuario);
+            if(usuario.UltimoAcesso.HasValue && usuario.UltimoAcesso.Value.Date == DateTime.Today)
+            {
+                MessageBox.Show("Você já jogou o quiz de hoje! Volte amanhã para jogar novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+           
+            }
+            else
+            {
+                this.Hide();
+                new FrmPerguntaAlternativas(_idUsuario).ShowDialog();
+                this.Show();
+            }
+               
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
