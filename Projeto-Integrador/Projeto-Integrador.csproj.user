@@ -34,6 +34,9 @@
     <Compile Update="Forms\FrmTelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\HistoricoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\UcConquista.cs">
       <SubType>UserControl</SubType>
     </Compile>

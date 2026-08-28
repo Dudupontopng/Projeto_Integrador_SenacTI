@@ -86,6 +86,7 @@
             btnHistorico.TabIndex = 4;
             btnHistorico.Text = "HISTÓRICO";
             btnHistorico.UseVisualStyleBackColor = false;
+            btnHistorico.Click += btnHistorico_Click;
             // 
             // btnSair
             // 

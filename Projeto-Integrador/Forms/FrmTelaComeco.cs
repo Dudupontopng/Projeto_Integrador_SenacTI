@@ -66,6 +66,21 @@ namespace Projeto_Integrador.Forms
             this.Show();
         }
 
+<<<<<<< HEAD
+        private void btnHistorico_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            HistoricoForm telaHistorico = new HistoricoForm();
+            telaHistorico.ShowDialog();
+            this.Show();
+        }
+
+        private void FrmTelaComeco_Load(object sender, EventArgs e)
+        {
+
+
+
+=======
         private void FrmTelaComeco_Load(object sender, EventArgs e)
         {
             if ((bool)_ehAdmin)
@@ -83,6 +98,8 @@ namespace Projeto_Integrador.Forms
             this.Hide();
             new FrmCadastrarPergunta().ShowDialog();
             this.Show();
+>>>>>>> b314b902d5dfe34f50836d124c854d90c8900b81
         }
     }
 }
+
