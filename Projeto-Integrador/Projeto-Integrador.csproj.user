@@ -16,6 +16,9 @@
     <Compile Update="Forms\FrmEsquecMinhaSenha.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FrmGabarito.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

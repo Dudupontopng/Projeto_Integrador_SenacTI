@@ -15,11 +15,13 @@ namespace Projeto_Integrador.Forms
     {
         private readonly int? _idUsuario;
         private readonly bool? _ehAdmin;
+        int idusuario;
         public FrmTelaComeco(int? idUsuario = null, bool? ehAdmin = null)
         {
             InitializeComponent();
             _idUsuario = idUsuario;
             _ehAdmin = ehAdmin;
+            idusuario = (int)_idUsuario;
         }
 
         private async void btnIniciar_Click(object sender, EventArgs e)
@@ -65,22 +67,18 @@ namespace Projeto_Integrador.Forms
             telaRanking.ShowDialog();
             this.Show();
         }
-
-<<<<<<< HEAD
-        private void btnHistorico_Click(object sender, EventArgs e)
+      private void btnHistorico_Click(object sender, EventArgs e)
         {
             this.Hide();
-            HistoricoForm telaHistorico = new HistoricoForm();
-            telaHistorico.ShowDialog();
+            new HistoricoForm(idusuario).ShowDialog();
             this.Show();
         }
 
-        private void FrmTelaComeco_Load(object sender, EventArgs e)
-        {
+        
 
 
 
-=======
+
         private void FrmTelaComeco_Load(object sender, EventArgs e)
         {
             if ((bool)_ehAdmin)
@@ -98,7 +96,7 @@ namespace Projeto_Integrador.Forms
             this.Hide();
             new FrmCadastrarPergunta().ShowDialog();
             this.Show();
->>>>>>> b314b902d5dfe34f50836d124c854d90c8900b81
+
         }
     }
 }

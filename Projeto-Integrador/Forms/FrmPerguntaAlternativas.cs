@@ -23,6 +23,7 @@ namespace Projeto_Integrador.Forms
         private Button alternativaSelecionada = null;
         private int pontosTotais = 0;
         private bool modoDobroOuNada = false;
+        private List<bool> resultadosPartida = new List<bool>();
         public FrmPerguntaAlternativas(int? idUsuario = null)
         {
             InitializeComponent();
@@ -105,6 +106,7 @@ namespace Projeto_Integrador.Forms
                 return;
             }
             bool isCorreta = (bool)alternativaSelecionada.Tag;
+            resultadosPartida.Add(isCorreta);
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             int pontosGanhosNaPergunta = 0;
             if (isCorreta)
@@ -205,8 +207,12 @@ namespace Projeto_Integrador.Forms
             }
             else
             {
-                MessageBox.Show($"Quiz finalizado! voce obteve {pontosTotais} pontos!", "Quiz terminado!", MessageBoxButtons.OK);
                 await UsuarioRepository.AtualizarUsuario(usuario.Id, usuario.Nivel, usuario.PontuacaoTotal, usuario.AcertosTotais, usuario.PerguntasRespondidas, usuario.MaiorSequenciaAcertos, usuario.AcertosConsecutivosAtuais, DateTime.Now);
+
+                this.Hide();
+
+                var frmGabarito = new FrmGabarito(pontosTotais, perguntasSorteadas, resultadosPartida);
+                frmGabarito.ShowDialog();
 
                 this.Close();
             }

@@ -1,6 +1,7 @@
-﻿using Projeto_Integrador.Banco.Configuracao;
+﻿using Dapper;
+using Projeto_Integrador.Banco.Configuracao;
+using Projeto_Integrador.Modelos;
 using System;
-using Dapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,26 @@ namespace Projeto_Integrador.Banco.Repositories
                 Acertou = acertou,
                 PontuacaoGanha = pontuacaoGanha
             });
+        }
+
+        public static async Task<List<HistoricoExibicao>> ObterHistoricoUsuario(int idUsuario)
+        {
+            using var conexao = ConexaoBanco.CriarConexao();
+
+            
+            var sql = @"
+        SELECT 
+            TemaPergunta AS Tema, 
+            Acertou, 
+            PontuacaoGanha AS Pontos
+        FROM quiz.historico_partida
+        WHERE UsuarioId = @UsuarioId
+        ORDER BY Id DESC
+        LIMIT 50;
+    ";
+
+            var resultado = await conexao.QueryAsync<HistoricoExibicao>(sql, new { UsuarioId = idUsuario });
+            return resultado.ToList();
         }
     }
 }
