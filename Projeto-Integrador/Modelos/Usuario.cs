@@ -21,6 +21,21 @@ namespace Projeto_Integrador.Modelos
             AcertosConsecutivosAtuais = acertosConsecutivosAtuais;
             UltimoAcesso = ultimoAcesso;
         }
+        public Usuario(int id, string nome, string nickname, DateTime dataNascimento, string senha, string nivel, int pontuacaoTotal, int acertosTotais, int perguntasRespondidas, int maiorSequenciaAcertos, int acertosConsecutivosAtuais, int rodadaMaisLonga)
+        {
+            Id = id;
+            Nome = nome;
+            Nickname = nickname;
+            DataNascimento = dataNascimento;
+            Senha = senha;
+            Nivel = nivel;
+            PontuacaoTotal = pontuacaoTotal;
+            AcertosTotais = acertosTotais;
+            PerguntasRespondidas = perguntasRespondidas;
+            MaiorSequenciaAcertos = maiorSequenciaAcertos;
+            AcertosConsecutivosAtuais = acertosConsecutivosAtuais;
+            RodadaMaisLonga = rodadaMaisLonga;
+        }
 
         public Usuario(string nickname, string senha)
         {
@@ -63,8 +78,8 @@ namespace Projeto_Integrador.Modelos
         public string SenhaEmTextoPuro { get; set; }
 
         public string Senha { get; private set; }
+        public int RodadaMaisLonga { get; set; }
 
-  
 
         public string Nivel { get; set; } = "iniciante";
 

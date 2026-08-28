@@ -23,32 +23,40 @@ namespace Projeto_Integrador.Forms
         private Button alternativaSelecionada = null;
         private int pontosTotais = 0;
         private bool modoDobroOuNada = false;
+
+        private bool _modoInfinito = false;
         private List<bool> resultadosPartida = new List<bool>();
-        public FrmPerguntaAlternativas(int? idUsuario = null)
+
+        public FrmPerguntaAlternativas(int? idUsuario = null, bool modoInfinito = false)
         {
             InitializeComponent();
             _idUsuario = idUsuario;
-
-
+            _modoInfinito = modoInfinito;
         }
 
         private async void FrmPerguntaAlternativas_Load(object sender, EventArgs e)
         {
-            perguntasSorteadas = await PerguntaRepository.ObterPerguntasQuiz();
-            lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+            if (_modoInfinito)
+            {
+                perguntasSorteadas = await PerguntaRepository.ObterPerguntasInfinitas();
+                lblNumeroPergunta.Text = $"Rodada {indiceAtual + 1} (SOBREVIVÊNCIA)";
+                lblNumeroPergunta.ForeColor = Color.DarkRed;
+            }
+            else
+            {
+                perguntasSorteadas = await PerguntaRepository.ObterPerguntasQuiz();
+                lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+            }
+
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
-            lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+
             ExibirPerguntaAtual();
-           
-
             await ExibirAlternativas();
+
             usuario = await UsuarioRepository.ObterPorId(_idUsuario);
-           
-            lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
-
-
         }
+
         private void ExibirPerguntaAtual()
         {
             var perguntaAtual = perguntasSorteadas[indiceAtual];
@@ -56,17 +64,19 @@ namespace Projeto_Integrador.Forms
             lblEnunciado.Left = (this.ClientSize.Width - lblEnunciado.Width) / 2;
             lblPontosPergunta.Left = (this.ClientSize.Width - lblPontosPergunta.Width) / 2;
             lblNumeroPergunta.Left = (this.ClientSize.Width - lblNumeroPergunta.Width) / 2;
-
         }
+
         private async Task ExibirAlternativas()
         {
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             int idPergunta = perguntaAtual.Id;
             var alterativas = await AlternativaRepository.ObterAlternativas(idPergunta);
-                btnAlternativa1.Text = alterativas[0].Texto;
+
+            btnAlternativa1.Text = alterativas[0].Texto;
             btnAlternativa1.Tag = alterativas[0].IsCorreta;
             btnAlternativa2.Text = alterativas[1].Texto;
             btnAlternativa2.Tag = alterativas[1].IsCorreta;
+
             if (alterativas.Count == 4)
             {
                 btnAlternativa3.Visible = true;
@@ -81,9 +91,7 @@ namespace Projeto_Integrador.Forms
                 btnAlternativa3.Visible = false;
                 btnAlternativa4.Visible = false;
             }
-
         }
-
 
         private void MarcarAlternativa(Button btnClicado)
         {
@@ -92,12 +100,10 @@ namespace Projeto_Integrador.Forms
             btnAlternativa3.BackColor = Color.FromArgb(64, 64, 64);
             btnAlternativa4.BackColor = Color.FromArgb(64, 64, 64);
 
-
             btnClicado.BackColor = Color.LightSkyBlue;
-
-
             alternativaSelecionada = btnClicado;
         }
+
         private async void btnProximo_Click_1(object sender, EventArgs e)
         {
             if (alternativaSelecionada == null)
@@ -105,14 +111,18 @@ namespace Projeto_Integrador.Forms
                 MessageBox.Show("Por favor, selecione uma alternativa antes de continuar!");
                 return;
             }
+
             bool isCorreta = (bool)alternativaSelecionada.Tag;
             resultadosPartida.Add(isCorreta);
+
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             int pontosGanhosNaPergunta = 0;
+
             if (isCorreta)
             {
                 int pontosBase = perguntaAtual.Pontuacao;
                 double multiplicadorBase = 1.0;
+
                 if (usuario.AcertosConsecutivosAtuais >= 5)
                 {
                     multiplicadorBase = 1.2;
@@ -121,32 +131,25 @@ namespace Projeto_Integrador.Forms
                 {
                     multiplicadorBase = 1.10;
                 }
+
                 pontosGanhosNaPergunta = (int)Math.Round(pontosBase * multiplicadorBase);
 
-                if(modoDobroOuNada && indiceAtual == 9)
+                if (modoDobroOuNada && indiceAtual == 9)
                 {
                     pontosGanhosNaPergunta += pontosTotais;
                     MessageBox.Show("BOOOA! Você acertou a pergunta final e DOBROU seus pontos!", "Aposta Vencida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
                 usuario.PontuacaoTotal += pontosGanhosNaPergunta;
-                if(usuario.PontuacaoTotal >= 10000)
-                {
-                    usuario.Nivel = "avançado";
-                }
-                else if(usuario.PontuacaoTotal >= 2001)
-                {
-                    usuario.Nivel = "intermediario";
-                }
-                else if(usuario.PontuacaoTotal >= 501)
-                {
-                    usuario.Nivel = "aprendiz";
-                }
-                else
-                {
-                    usuario.Nivel = "iniciante";
-                }
-                    usuario.AcertosTotais++;
+
+                if (usuario.PontuacaoTotal >= 10000) { usuario.Nivel = "avançado"; }
+                else if (usuario.PontuacaoTotal >= 2001) { usuario.Nivel = "intermediario"; }
+                else if (usuario.PontuacaoTotal >= 501) { usuario.Nivel = "aprendiz"; }
+                else { usuario.Nivel = "iniciante"; }
+
+                usuario.AcertosTotais++;
                 usuario.AcertosConsecutivosAtuais++;
+
                 if (usuario.AcertosConsecutivosAtuais > usuario.MaiorSequenciaAcertos)
                 {
                     usuario.MaiorSequenciaAcertos = usuario.AcertosConsecutivosAtuais;
@@ -155,17 +158,39 @@ namespace Projeto_Integrador.Forms
             else
             {
                 usuario.AcertosConsecutivosAtuais = 0;
+
+                if (_modoInfinito)
+                {
+                    MessageBox.Show($"FIM DE JOGO! Você sobreviveu por {indiceAtual} rodadas e fez {pontosTotais} pontos no Modo Sobrevivência!", "Morte Súbita ☠️", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (indiceAtual > usuario.RodadaMaisLonga)
+                    {
+                        usuario.RodadaMaisLonga = indiceAtual;
+                    }
+
+                    await UsuarioRepository.AtualizarInfinito(usuario.Id, usuario.Nivel, usuario.PontuacaoTotal, usuario.AcertosTotais, usuario.PerguntasRespondidas, usuario.MaiorSequenciaAcertos, usuario.AcertosConsecutivosAtuais, usuario.RodadaMaisLonga);
+
+                    this.Hide();
+
+                    var frmGabaritoInf = new FrmGabarito(pontosTotais, perguntasSorteadas.Take(indiceAtual + 1).ToList(), resultadosPartida);
+                    frmGabaritoInf.ShowDialog();
+                    this.Close();
+
+                    return;
+                }
+
                 if (modoDobroOuNada && indiceAtual == 9)
                 {
                     MessageBox.Show("FIM DE JOGO! Você errou a aposta e perdeu todos os pontos desta partida.", "Aposta Perdida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     usuario.PontuacaoTotal -= pontosTotais;
                     pontosTotais = 0;
                 }
-
             }
+
             usuario.PerguntasRespondidas++;
             pontosTotais += pontosGanhosNaPergunta;
             await HistoricoRepository.RegistrarResposta(usuario.Id, perguntaAtual.Id, perguntaAtual.Tema, isCorreta, pontosGanhosNaPergunta);
+
             alternativaSelecionada.BackColor = Color.FromArgb(64, 64, 64);
             alternativaSelecionada = null;
             proximo();
@@ -173,9 +198,9 @@ namespace Projeto_Integrador.Forms
 
         private async void proximo()
         {
-
             indiceAtual++;
-            if (indiceAtual == 9 && pontosTotais > 0)
+
+            if (!_modoInfinito && indiceAtual == 9 && pontosTotais > 0)
             {
                 DialogResult resposta = MessageBox.Show(
                     $"Você chegou na ÚLTIMA pergunta com {pontosTotais} pontos!\n\nDeseja ativar o modo DOBRO OU NADA?\nSe acertar, ganha o dobro dos pontos da partida. Se errar, perde TUDO!\n\nAceita o desafio?",
@@ -186,65 +211,75 @@ namespace Projeto_Integrador.Forms
                 if (resposta == DialogResult.Yes)
                 {
                     modoDobroOuNada = true;
+
+                    var perguntaChefao = await PerguntaRepository.ObterPerguntaDobroOuNada();
+
+                    if (perguntaChefao != null)
+                    {
+                        perguntasSorteadas[indiceAtual] = perguntaChefao;
+                    }
                 }
             }
 
-            if (indiceAtual < 10)
+            bool temMaisPerguntas = _modoInfinito ? (indiceAtual < perguntasSorteadas.Count) : (indiceAtual < 10);
+
+            if (temMaisPerguntas)
             {
                 var perguntaAtual = perguntasSorteadas[indiceAtual];
-                lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+
+                if (_modoInfinito)
+                {
+                    lblNumeroPergunta.Text = $"Rodada {indiceAtual + 1} (SOBREVIVÊNCIA)";
+                    lblNumeroPergunta.ForeColor = Color.DarkRed;
+                }
+                else
+                {
+                    lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
+                }
 
                 if (modoDobroOuNada)
                 {
                     lblNumeroPergunta.Text += " (DOBRO OU NADA!)";
-                    lblNumeroPergunta.ForeColor = Color.Red;    
+                    lblNumeroPergunta.ForeColor = Color.Red;
                 }
 
                 lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
-               
+
                 ExibirPerguntaAtual();
                 await ExibirAlternativas();
             }
             else
             {
-                await UsuarioRepository.AtualizarUsuario(usuario.Id, usuario.Nivel, usuario.PontuacaoTotal, usuario.AcertosTotais, usuario.PerguntasRespondidas, usuario.MaiorSequenciaAcertos, usuario.AcertosConsecutivosAtuais, DateTime.Now);
+                if (_modoInfinito)
+                {
+                    MessageBox.Show($"ZEROU O JOGO! Você respondeu todas as perguntas do banco!", "Lenda!", MessageBoxButtons.OK);
+
+                    if (indiceAtual > usuario.RodadaMaisLonga)
+                    {
+                        usuario.RodadaMaisLonga = indiceAtual;
+                    }
+
+                    await UsuarioRepository.AtualizarInfinito(usuario.Id, usuario.Nivel, usuario.PontuacaoTotal, usuario.AcertosTotais, usuario.PerguntasRespondidas, usuario.MaiorSequenciaAcertos, usuario.AcertosConsecutivosAtuais, usuario.RodadaMaisLonga);
+                }
+                else
+                {
+                    await UsuarioRepository.AtualizarUsuario(usuario.Id, usuario.Nivel, usuario.PontuacaoTotal, usuario.AcertosTotais, usuario.PerguntasRespondidas, usuario.MaiorSequenciaAcertos, usuario.AcertosConsecutivosAtuais, DateTime.Now);
+                }
 
                 this.Hide();
 
-                var frmGabarito = new FrmGabarito(pontosTotais, perguntasSorteadas, resultadosPartida);
+                var frmGabarito = new FrmGabarito(pontosTotais, perguntasSorteadas.Take(indiceAtual).ToList(), resultadosPartida);
                 frmGabarito.ShowDialog();
 
                 this.Close();
             }
         }
-        private void btnAlternativa1_Click(object sender, EventArgs e)
-        {
-            MarcarAlternativa(btnAlternativa1);
-        }
 
-        private void btnAlternativa2_Click(object sender, EventArgs e)
-        {
-            MarcarAlternativa(btnAlternativa2);
-        }
-
-        private void btnAlternativa3_Click(object sender, EventArgs e)
-        {
-            MarcarAlternativa(btnAlternativa3);
-        }
-
-        private void btnAlternativa4_Click(object sender, EventArgs e)
-        {
-            MarcarAlternativa(btnAlternativa4);
-        }
-
-        private void lblNumeroPergunta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPontosPergunta_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void btnAlternativa1_Click(object sender, EventArgs e) { MarcarAlternativa(btnAlternativa1); }
+        private void btnAlternativa2_Click(object sender, EventArgs e) { MarcarAlternativa(btnAlternativa2); }
+        private void btnAlternativa3_Click(object sender, EventArgs e) { MarcarAlternativa(btnAlternativa3); }
+        private void btnAlternativa4_Click(object sender, EventArgs e) { MarcarAlternativa(btnAlternativa4); }
+        private void lblNumeroPergunta_Click(object sender, EventArgs e) { }
+        private void lblPontosPergunta_Click(object sender, EventArgs e) { }
     }
 }

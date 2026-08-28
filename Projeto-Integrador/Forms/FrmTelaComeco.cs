@@ -21,17 +21,17 @@ namespace Projeto_Integrador.Forms
             InitializeComponent();
             _idUsuario = idUsuario;
             _ehAdmin = ehAdmin;
-            idusuario = (int)_idUsuario;
+            idusuario = _idUsuario ?? 0;
         }
 
         private async void btnIniciar_Click(object sender, EventArgs e)
         {
             var usuario = await UsuarioRepository.ObterPorId(_idUsuario);
-            if(usuario.UltimoAcesso.HasValue && usuario.UltimoAcesso.Value.Date == DateTime.Today)
+            if (usuario.UltimoAcesso.HasValue && usuario.UltimoAcesso.Value.Date == DateTime.Today)
             {
                 MessageBox.Show("Você já jogou o quiz de hoje! Volte amanhã para jogar novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-           
+
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Projeto_Integrador.Forms
                 new FrmPerguntaAlternativas(_idUsuario).ShowDialog();
                 this.Show();
             }
-               
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -67,14 +67,14 @@ namespace Projeto_Integrador.Forms
             telaRanking.ShowDialog();
             this.Show();
         }
-      private void btnHistorico_Click(object sender, EventArgs e)
+        private void btnHistorico_Click(object sender, EventArgs e)
         {
             this.Hide();
             new HistoricoForm(idusuario).ShowDialog();
             this.Show();
         }
 
-        
+
 
 
 
@@ -97,6 +97,21 @@ namespace Projeto_Integrador.Forms
             new FrmCadastrarPergunta().ShowDialog();
             this.Show();
 
+        }
+
+        private async void btnModoInfinito_Click(object sender, EventArgs e)
+        {
+            var usuario = await UsuarioRepository.ObterPorId(_idUsuario);
+
+            
+            
+            
+                this.Hide();
+
+                new FrmPerguntaAlternativas(_idUsuario, true).ShowDialog();
+
+                this.Show();
+            
         }
     }
 }

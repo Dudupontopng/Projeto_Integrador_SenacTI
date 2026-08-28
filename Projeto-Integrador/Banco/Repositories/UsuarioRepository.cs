@@ -83,6 +83,21 @@ namespace Projeto_Integrador.Banco.Repositories
                 Where Id = @Id;
 ", new { Id = idUsuario, Nivel = nivel, PontuacaoTotal = pontuacaoTotal, AcertosTotais = acertosTotais, PerguntasRespondidas = perguntasRespondidas, MaiorSequenciaAcertos = maiorSequenciaAcertos, AcertosConsecutivosAtuais = acertosConsecutivosAtuais, UltimoAcesso = ultimoAcesso });
         }
+        public static async Task AtualizarInfinito(int idUsuario, string nivel, int pontuacaoTotal, int acertosTotais, int perguntasRespondidas, int maiorSequenciaAcertos, int acertosConsecutivosAtuais, int RodadaMaisLonga)
+        {
+            var usuario = await ConexaoBanco.CriarConexao().QueryAsync(
+                @"
+                Update quiz.usuario 
+                set Nivel = @Nivel,
+                PontuacaoTotal = @PontuacaoTotal,
+                AcertosTotais = @AcertosTotais,
+                PerguntasRespondidas = @PerguntasRespondidas,
+                MaiorSequenciaAcertos = @MaiorSequenciaAcertos,
+                AcertosConsecutivosAtuais = @AcertosConsecutivosAtuais,
+                RodadaMaisLonga = @RodadaMaisLonga
+                Where Id = @Id;
+", new { Id = idUsuario, Nivel = nivel, PontuacaoTotal = pontuacaoTotal, AcertosTotais = acertosTotais, PerguntasRespondidas = perguntasRespondidas, MaiorSequenciaAcertos = maiorSequenciaAcertos, AcertosConsecutivosAtuais = acertosConsecutivosAtuais, rodadaMaisLonga = RodadaMaisLonga });
+        }
         public static async Task<TemaDominante?> ObterTemaDominante(int idUsuario)
         {
             using var conexao = ConexaoBanco.CriarConexao();

@@ -36,6 +36,7 @@
             pictureBox1 = new PictureBox();
             btnPerfil = new Button();
             btnCriarPergunta = new Button();
+            btnModoInfinito = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -94,7 +95,7 @@
             btnSair.BackgroundImageLayout = ImageLayout.None;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(345, 380);
+            btnSair.Location = new Point(344, 435);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(112, 34);
             btnSair.TabIndex = 6;
@@ -142,12 +143,26 @@
             btnCriarPergunta.Visible = false;
             btnCriarPergunta.Click += btnCriarPergunta_Click;
             // 
+            // btnModoInfinito
+            // 
+            btnModoInfinito.BackColor = Color.FromArgb(64, 64, 64);
+            btnModoInfinito.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnModoInfinito.ForeColor = Color.White;
+            btnModoInfinito.Location = new Point(299, 345);
+            btnModoInfinito.Name = "btnModoInfinito";
+            btnModoInfinito.Size = new Size(200, 70);
+            btnModoInfinito.TabIndex = 11;
+            btnModoInfinito.Text = "MODO INFINITO";
+            btnModoInfinito.UseVisualStyleBackColor = false;
+            btnModoInfinito.Click += btnModoInfinito_Click;
+            // 
             // FrmTelaComeco
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(839, 510);
+            Controls.Add(btnModoInfinito);
             Controls.Add(btnCriarPergunta);
             Controls.Add(btnPerfil);
             Controls.Add(pictureBox1);
@@ -174,5 +189,6 @@
         private PictureBox pictureBox1;
         private Button btnPerfil;
         private Button btnCriarPergunta;
+        private Button btnModoInfinito;
     }
 }
