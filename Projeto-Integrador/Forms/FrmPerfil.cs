@@ -90,5 +90,12 @@ namespace Projeto_Integrador.Forms
             FrmConquistas frmConquistas = new FrmConquistas(_idUsuario);
             frmConquistas.ShowDialog();
         }
+
+        private void linkInventario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            new FrmInventario(_usuarioAtual.Id).ShowDialog();
+            this.Show();
+        }
     }
 }

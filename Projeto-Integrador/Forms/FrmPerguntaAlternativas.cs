@@ -23,9 +23,10 @@ namespace Projeto_Integrador.Forms
         private Button alternativaSelecionada = null;
         private int pontosTotais = 0;
         private bool modoDobroOuNada = false;
-
+        private double multiplicadorDaLoja = 1.0;
         private bool _modoInfinito = false;
         private List<bool> resultadosPartida = new List<bool>();
+        private bool temVidaExtra = false;
 
         public FrmPerguntaAlternativas(int? idUsuario = null, bool modoInfinito = false)
         {
@@ -36,8 +37,43 @@ namespace Projeto_Integrador.Forms
 
         private async void FrmPerguntaAlternativas_Load(object sender, EventArgs e)
         {
+            usuario = await UsuarioRepository.ObterPorId(_idUsuario);
+            var inventario = await LojaRepository.ObterInventarioDoUsuario(usuario.Id);
+            var itemMultiplicador = inventario.FirstOrDefault(i => i.TipoEfeito == "Multiplicador" && i.Quantidade > 0);
+            if (itemMultiplicador != null)
+            {
+                DialogResult usarItem = MessageBox.Show(
+                    $"Você tem {itemMultiplicador.Quantidade}x '{itemMultiplicador.NomeItem}' no inventário!\n\nDeseja usar agora para ganhar {itemMultiplicador.ValorEfeito}x mais pontos nesta partida?",
+                    "Inventário", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (usarItem == DialogResult.Yes)
+                {
+                    multiplicadorDaLoja = (double)itemMultiplicador.ValorEfeito;
+                    await LojaRepository.ConsumirItem(usuario.Id, itemMultiplicador.ItemId);
+                    MessageBox.Show("Item equipado! Seus pontos serão multiplicados nesta partida.", "Bônus Ativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                }
+            }
             if (_modoInfinito)
             {
+                
+               
+                
+                var itemVida = inventario.FirstOrDefault(i => i.TipoEfeito == "VidaExtra" && i.Quantidade > 0);
+
+                if (itemVida != null)
+                {
+                    DialogResult usarVida = MessageBox.Show(
+                        $"Você tem {itemVida.Quantidade}x '{itemVida.NomeItem}' no inventário!\n\nDeseja equipar para ter uma SEGUNDA CHANCE caso erre uma pergunta?",
+                        "Seguro de Vida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (usarVida == DialogResult.Yes)
+                    {
+                        temVidaExtra = true;
+                        await LojaRepository.ConsumirItem(usuario.Id, itemVida.ItemId);
+                        MessageBox.Show("Seguro de Vida equipado! Você pode errar 1 vez sem dar Game Over.", "Proteção Ativa 🛡️", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
                 perguntasSorteadas = await PerguntaRepository.ObterPerguntasInfinitas();
                 lblNumeroPergunta.Text = $"Rodada {indiceAtual + 1} (SOBREVIVÊNCIA)";
                 lblNumeroPergunta.ForeColor = Color.DarkRed;
@@ -47,7 +83,7 @@ namespace Projeto_Integrador.Forms
                 perguntasSorteadas = await PerguntaRepository.ObterPerguntasQuiz();
                 lblNumeroPergunta.Text = $"Pergunta {indiceAtual + 1}";
             }
-
+            
             var perguntaAtual = perguntasSorteadas[indiceAtual];
             lblPontosPergunta.Text = $"{perguntaAtual.Pontuacao}";
 
@@ -132,7 +168,7 @@ namespace Projeto_Integrador.Forms
                     multiplicadorBase = 1.10;
                 }
 
-                pontosGanhosNaPergunta = (int)Math.Round(pontosBase * multiplicadorBase);
+                pontosGanhosNaPergunta = (int)Math.Round(pontosBase * multiplicadorBase  * multiplicadorDaLoja);
 
                 if (modoDobroOuNada && indiceAtual == 9)
                 {
@@ -161,6 +197,18 @@ namespace Projeto_Integrador.Forms
 
                 if (_modoInfinito)
                 {
+                    if (temVidaExtra)
+                    {
+                        MessageBox.Show("Você errou a resposta! Mas o seu SEGURO DE VIDA quebrou e te salvou da Morte Súbita. O jogo continua!", "Salvo pelo gongo 🛡️", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        temVidaExtra = false;
+                        usuario.PerguntasRespondidas++;
+                        await HistoricoRepository.RegistrarResposta(usuario.Id, perguntaAtual.Id, perguntaAtual.Tema, isCorreta, pontosGanhosNaPergunta);
+                        alternativaSelecionada.BackColor = Color.FromArgb(64, 64, 64);
+                        alternativaSelecionada = null;
+                        proximo();
+
+                        return;
+                    }
                     MessageBox.Show($"FIM DE JOGO! Você sobreviveu por {indiceAtual} rodadas e fez {pontosTotais} pontos no Modo Sobrevivência!", "Morte Súbita ☠️", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     if (indiceAtual > usuario.RodadaMaisLonga)

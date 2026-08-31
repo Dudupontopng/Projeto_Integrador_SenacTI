@@ -101,3 +101,5 @@ C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador
 C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto_Integrador.Forms.HistoricoForm.resources
 C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto_Integrador.Forms.UcConquista.resources
 C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto_Integrador.Forms.FrmGabarito.resources
+C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto_Integrador.Forms.FrmTelaLoja.resources
+C:\Users\EDUARDOFINGERBOHN\Desktop\Projeto_Integrador_SenacTI\Projeto-Integrador\obj\Debug\net8.0-windows\Projeto_Integrador.Forms.FrmInventario.resources

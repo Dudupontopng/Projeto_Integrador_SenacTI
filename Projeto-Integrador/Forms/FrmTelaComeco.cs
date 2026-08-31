@@ -103,15 +103,22 @@ namespace Projeto_Integrador.Forms
         {
             var usuario = await UsuarioRepository.ObterPorId(_idUsuario);
 
-            
-            
-            
-                this.Hide();
 
-                new FrmPerguntaAlternativas(_idUsuario, true).ShowDialog();
 
-                this.Show();
-            
+
+            this.Hide();
+
+            new FrmPerguntaAlternativas(_idUsuario, true).ShowDialog();
+
+            this.Show();
+
+        }
+
+        private void btnLoja_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmTelaLoja(idusuario).ShowDialog();
+            this.Show();
         }
     }
 }

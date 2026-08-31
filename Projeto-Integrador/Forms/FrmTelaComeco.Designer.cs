@@ -37,6 +37,7 @@
             btnPerfil = new Button();
             btnCriarPergunta = new Button();
             btnModoInfinito = new Button();
+            btnLoja = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -95,7 +96,7 @@
             btnSair.BackgroundImageLayout = ImageLayout.None;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(344, 435);
+            btnSair.Location = new Point(668, 457);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(112, 34);
             btnSair.TabIndex = 6;
@@ -156,12 +157,26 @@
             btnModoInfinito.UseVisualStyleBackColor = false;
             btnModoInfinito.Click += btnModoInfinito_Click;
             // 
+            // btnLoja
+            // 
+            btnLoja.BackColor = Color.FromArgb(64, 64, 64);
+            btnLoja.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnLoja.ForeColor = Color.White;
+            btnLoja.Location = new Point(299, 421);
+            btnLoja.Name = "btnLoja";
+            btnLoja.Size = new Size(200, 70);
+            btnLoja.TabIndex = 12;
+            btnLoja.Text = "LOJA";
+            btnLoja.UseVisualStyleBackColor = false;
+            btnLoja.Click += btnLoja_Click;
+            // 
             // FrmTelaComeco
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(839, 510);
+            Controls.Add(btnLoja);
             Controls.Add(btnModoInfinito);
             Controls.Add(btnCriarPergunta);
             Controls.Add(btnPerfil);
@@ -190,5 +205,6 @@
         private Button btnPerfil;
         private Button btnCriarPergunta;
         private Button btnModoInfinito;
+        private Button btnLoja;
     }
 }

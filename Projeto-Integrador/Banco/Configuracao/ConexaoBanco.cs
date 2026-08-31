@@ -10,7 +10,7 @@ namespace Projeto_Integrador.Banco.Configuracao
 {
     internal class ConexaoBanco
     {
-        public IDbConnection CriarConexao()
+        public static IDbConnection CriarConexao()
         {
             return new NpgsqlConnection("Server=localhost;" +
                 "Port=5432;" +

@@ -36,8 +36,8 @@
             lblTemaDominante = new Label();
             btnLogin = new Button();
             lnkConquistas = new LinkLabel();
-            lnkHistorico = new LinkLabel();
             lnkAlterarSenha = new LinkLabel();
+            linkInventario = new LinkLabel();
             SuspendLayout();
             // 
             // lblNick
@@ -130,17 +130,6 @@
             lnkConquistas.Text = "Conquistas";
             lnkConquistas.LinkClicked += lnkConquistas_LinkClicked;
             // 
-            // lnkHistorico
-            // 
-            lnkHistorico.AutoSize = true;
-            lnkHistorico.Location = new Point(684, 72);
-            lnkHistorico.Name = "lnkHistorico";
-            lnkHistorico.Size = new Size(83, 25);
-            lnkHistorico.TabIndex = 9;
-            lnkHistorico.TabStop = true;
-            lnkHistorico.Text = "Histórico";
-            lnkHistorico.LinkClicked += lnkHistorico_LinkClicked;
-            // 
             // lnkAlterarSenha
             // 
             lnkAlterarSenha.AutoSize = true;
@@ -152,13 +141,24 @@
             lnkAlterarSenha.Text = "Alterar senha";
             lnkAlterarSenha.LinkClicked += lnkAlterarSenha_LinkClicked;
             // 
+            // linkInventario
+            // 
+            linkInventario.AutoSize = true;
+            linkInventario.Location = new Point(676, 68);
+            linkInventario.Name = "linkInventario";
+            linkInventario.Size = new Size(91, 25);
+            linkInventario.TabIndex = 11;
+            linkInventario.TabStop = true;
+            linkInventario.Text = "Inventário";
+            linkInventario.LinkClicked += linkInventario_LinkClicked;
+            // 
             // FrmPerfil
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(linkInventario);
             Controls.Add(lnkAlterarSenha);
-            Controls.Add(lnkHistorico);
             Controls.Add(lnkConquistas);
             Controls.Add(btnLogin);
             Controls.Add(lblTemaDominante);
@@ -184,7 +184,7 @@
         private Label lblTemaDominante;
         private Button btnLogin;
         private LinkLabel lnkConquistas;
-        private LinkLabel lnkHistorico;
         private LinkLabel lnkAlterarSenha;
+        private LinkLabel linkInventario;
     }
 }
