@@ -43,7 +43,7 @@
             lblEnunciado.Anchor = AnchorStyles.Top;
             lblEnunciado.AutoSize = true;
             lblEnunciado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblEnunciado.Location = new Point(323, 65);
+            lblEnunciado.Location = new Point(444, 65);
             lblEnunciado.MaximumSize = new Size(550, 100);
             lblEnunciado.Name = "lblEnunciado";
             lblEnunciado.Size = new Size(110, 28);
@@ -56,7 +56,7 @@
             lblNumeroPergunta.Anchor = AnchorStyles.Top;
             lblNumeroPergunta.AutoSize = true;
             lblNumeroPergunta.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            lblNumeroPergunta.Location = new Point(258, 9);
+            lblNumeroPergunta.Location = new Point(379, 9);
             lblNumeroPergunta.Name = "lblNumeroPergunta";
             lblNumeroPergunta.Size = new Size(261, 41);
             lblNumeroPergunta.TabIndex = 7;
@@ -70,7 +70,7 @@
             btnProximo.BackgroundImageLayout = ImageLayout.None;
             btnProximo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnProximo.ForeColor = Color.White;
-            btnProximo.Location = new Point(633, 404);
+            btnProximo.Location = new Point(901, 536);
             btnProximo.Name = "btnProximo";
             btnProximo.Size = new Size(112, 34);
             btnProximo.TabIndex = 8;
@@ -84,9 +84,9 @@
             btnAlternativa1.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa1.ForeColor = Color.White;
-            btnAlternativa1.Location = new Point(70, 203);
+            btnAlternativa1.Location = new Point(87, 203);
             btnAlternativa1.Name = "btnAlternativa1";
-            btnAlternativa1.Size = new Size(272, 71);
+            btnAlternativa1.Size = new Size(350, 130);
             btnAlternativa1.TabIndex = 9;
             btnAlternativa1.Text = "Alternativa1";
             btnAlternativa1.UseVisualStyleBackColor = false;
@@ -98,9 +98,9 @@
             btnAlternativa2.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa2.ForeColor = Color.White;
-            btnAlternativa2.Location = new Point(443, 203);
+            btnAlternativa2.Location = new Point(572, 203);
             btnAlternativa2.Name = "btnAlternativa2";
-            btnAlternativa2.Size = new Size(272, 71);
+            btnAlternativa2.Size = new Size(350, 130);
             btnAlternativa2.TabIndex = 10;
             btnAlternativa2.Text = "Alternativa2";
             btnAlternativa2.UseVisualStyleBackColor = false;
@@ -112,9 +112,9 @@
             btnAlternativa3.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa3.ForeColor = Color.White;
-            btnAlternativa3.Location = new Point(70, 311);
+            btnAlternativa3.Location = new Point(87, 361);
             btnAlternativa3.Name = "btnAlternativa3";
-            btnAlternativa3.Size = new Size(272, 77);
+            btnAlternativa3.Size = new Size(350, 130);
             btnAlternativa3.TabIndex = 11;
             btnAlternativa3.Text = "Alternativa3";
             btnAlternativa3.UseVisualStyleBackColor = false;
@@ -126,9 +126,9 @@
             btnAlternativa4.BackgroundImageLayout = ImageLayout.None;
             btnAlternativa4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAlternativa4.ForeColor = Color.White;
-            btnAlternativa4.Location = new Point(443, 311);
+            btnAlternativa4.Location = new Point(572, 361);
             btnAlternativa4.Name = "btnAlternativa4";
-            btnAlternativa4.Size = new Size(272, 77);
+            btnAlternativa4.Size = new Size(350, 130);
             btnAlternativa4.TabIndex = 12;
             btnAlternativa4.Text = "Alternativa4";
             btnAlternativa4.UseVisualStyleBackColor = false;
@@ -139,7 +139,7 @@
             lblPontosPergunta.Anchor = AnchorStyles.Top;
             lblPontosPergunta.AutoSize = true;
             lblPontosPergunta.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblPontosPergunta.Location = new Point(306, 157);
+            lblPontosPergunta.Location = new Point(430, 144);
             lblPontosPergunta.Name = "lblPontosPergunta";
             lblPontosPergunta.Size = new Size(147, 25);
             lblPontosPergunta.TabIndex = 13;
@@ -151,7 +151,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 450);
+            ClientSize = new Size(1025, 582);
             Controls.Add(lblPontosPergunta);
             Controls.Add(btnAlternativa4);
             Controls.Add(btnAlternativa3);
